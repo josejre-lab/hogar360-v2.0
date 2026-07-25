@@ -1,12 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { MessageCircle, ChevronRight } from "lucide-react";
+import { MessageCircle, ChevronRight, Play, X } from "lucide-react";
 import { Link } from "wouter";
+import { useState } from "react";
 
 export default function PropertyPage() {
-  const agentWhatsApp = "+1 (809) 915-7062";
-  const agentName = "Laura Liz";
+  const agentWhatsApp = "+1 (809) 844-5009";
+  const agentName = "Punto Exacto";
   const matterportLink = "https://my.matterport.com/show/?m=XXXXX"; // Placeholder - replace with actual link
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+
+  const galleryPhotos = [
+    { src: "/manus-storage/vista-linda-hero_e01d4f82.png", title: "Fachada principal" },
+    { src: "https://framerusercontent.com/images/wkTprlsrdB62blXtpLFmyJcM3vQ.jpeg", title: "Vista frontal" },
+    { src: "https://framerusercontent.com/images/aojY4A8XMSYIrUdu8XbsXJspTw.jpeg", title: "Vista exterior" },
+    { src: "https://framerusercontent.com/images/Gvg7GhWAVR5QLMouuNf9o8Mw.jpeg", title: "Acceso principal" },
+    { src: "https://framerusercontent.com/images/eQWAYO7xnwJODSGeN4rGiflQLY.jpeg", title: "Detalle arquitectónico" },
+  ];
   
   const handleAgentContact = () => {
     const message = encodeURIComponent("Hola, vi el tour 3D de la casa y me interesa. Quisiera agendar una visita.");
@@ -32,8 +42,8 @@ export default function PropertyPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://framerusercontent.com/images/wkTprlsrdB62blXtpLFmyJcM3vQ.jpeg')",
-            opacity: 0.7,
+            backgroundImage: "url('/manus-storage/vista-linda-hero_e01d4f82.png')",
+            opacity: 0.85,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -69,6 +79,82 @@ export default function PropertyPage() {
           </p>
         </div>
       </section>
+
+      {/* Video Tour Section */}
+      <section className="py-16">
+        <div className="container">
+          <div className="mb-6">
+            <p className="text-sm font-semibold text-teal-600 tracking-wide flex items-center gap-2">
+              <Play className="w-4 h-4" /> VIDEO TOUR
+            </p>
+            <h2 className="text-3xl font-bold mt-2">Recorre la propiedad en video</h2>
+          </div>
+
+          <div className="bg-gray-900 rounded-lg overflow-hidden aspect-video shadow-lg">
+            <video
+              src="/manus-storage/videotour-ai_bd4ebbdd.mp4"
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container">
+          <div className="mb-8">
+            <p className="text-sm font-semibold text-teal-600 tracking-wide">GALERÍA</p>
+            <h2 className="text-3xl font-bold mt-2">Fotos de la propiedad</h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {galleryPhotos.map((photo, idx) => (
+              <button
+                key={idx}
+                onClick={() => setLightboxImage(photo.src)}
+                className={`group relative overflow-hidden rounded-lg bg-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-600 ${
+                  idx === 0 ? "col-span-2 md:col-span-2 md:row-span-2 aspect-video md:aspect-auto" : "aspect-square"
+                }`}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <p className="absolute bottom-3 left-3 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {photo.title}
+                </p>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-4 right-4 text-white/80 hover:text-white p-2"
+            aria-label="Cerrar"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          <img
+            src={lightboxImage}
+            alt="Foto ampliada"
+            className="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      )}
 
       {/* Property Details */}
       <section className="py-16">
@@ -129,12 +215,11 @@ export default function PropertyPage() {
         </div>
       </section>
 
-      {/* Price Section */}
+      {/* Description Section */}
       <section className="py-16 bg-teal-50">
         <div className="container">
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold text-teal-600 tracking-wide">PRECIO</p>
-            <h2 className="text-4xl font-bold mt-2 text-gray-900">RD$ 10.2 Millones</h2>
+            <p className="text-sm font-semibold text-teal-600 tracking-wide">SOBRE LA PROPIEDAD</p>
             <p className="text-gray-600 mt-4">
               Una excelente oportunidad de adquirir una cómoda y acogedora vivienda ubicada en Vista Linda. 
               La casa se encuentra en muy buen estado de conservación, lista para habitar. Ideal para familias 
@@ -152,11 +237,11 @@ export default function PropertyPage() {
             
             <div className="flex items-center gap-4 mb-8 pb-8 border-b border-gray-200">
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-2xl font-bold">
-                LL
+                PE
               </div>
               <div>
                 <p className="font-semibold text-gray-900">{agentName}</p>
-                <p className="text-sm text-gray-600">Agente Inmobiliario</p>
+                <p className="text-sm text-gray-600">Agencia Inmobiliaria · 809-844-5009</p>
               </div>
             </div>
 
