@@ -28,10 +28,8 @@ export default function PropertyPage() {
       {/* Header with back link */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="container flex items-center justify-between py-4">
-          <Link href="/hogar360">
-            <a className="text-sm font-medium text-teal-600 hover:text-teal-700 flex items-center gap-1">
-              ← Volver a Hogar360
-            </a>
+          <Link href="/hogar360" className="text-sm font-medium text-teal-600 hover:text-teal-700 flex items-center gap-1">
+            ← Volver a Hogar360
           </Link>
           <div className="text-xs text-gray-500">Vista Linda, Santiago</div>
         </div>
@@ -265,10 +263,8 @@ export default function PropertyPage() {
       <footer className="bg-gray-900 text-gray-400 py-8">
         <div className="container text-center text-sm">
           <p className="mb-2">Tour 3D y Landing creados por</p>
-          <Link href="/hogar360">
-            <a className="text-teal-400 hover:text-teal-300 font-semibold">
-              Hogar360 - Tours 3D para Propiedades
-            </a>
+          <Link href="/hogar360" className="text-teal-400 hover:text-teal-300 font-semibold">
+            Hogar360 - Tours 3D para Propiedades
           </Link>
         </div>
       </footer>

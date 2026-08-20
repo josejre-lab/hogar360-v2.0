@@ -37,10 +37,8 @@ export default function BusinessPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
         <div className="container flex items-center justify-between py-4">
-          <Link href="/">
-            <a className="text-sm font-medium text-teal-600 hover:text-teal-700 flex items-center gap-1">
-              ← Ver Propiedad Demo
-            </a>
+          <Link href="/" className="text-sm font-medium text-teal-600 hover:text-teal-700 flex items-center gap-1">
+            ← Ver Propiedad Demo
           </Link>
           <div className="font-bold text-gray-900">Hogar360</div>
         </div>
@@ -79,32 +77,28 @@ export default function BusinessPage() {
               { title: "Acceso principal", image: "https://framerusercontent.com/images/Gvg7GhWAVR5QLMouuNf9o8Mw.jpeg" },
               { title: "Detalle arquitectónico", image: "https://framerusercontent.com/images/eQWAYO7xnwJODSGeN4rGiflQLY.jpeg" },
             ].map((card, idx) => (
-              <Link key={idx} href="/">
-                <a className="group cursor-pointer">
-                  <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="aspect-square overflow-hidden bg-gray-200">
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <p className="text-sm font-semibold text-teal-600 mb-1">DISPONIBLE</p>
-                      <h3 className="font-semibold text-gray-900">Vista Linda</h3>
-                      <p className="text-sm text-gray-600">{card.title}</p>
-                    </div>
-                  </Card>
-                </a>
+              <Link key={idx} href="/" className="group cursor-pointer">
+                <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="aspect-square overflow-hidden bg-gray-200">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-sm font-semibold text-teal-600 mb-1">DISPONIBLE</p>
+                    <h3 className="font-semibold text-gray-900">Vista Linda</h3>
+                    <p className="text-sm text-gray-600">{card.title}</p>
+                  </div>
+                </Card>
               </Link>
             ))}
           </div>
 
           <div className="text-center">
-            <Link href="/">
-              <a className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold">
-                Ver tour 3D completo <ArrowRight className="w-4 h-4" />
-              </a>
+            <Link href="/" className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold">
+              Ver tour 3D completo <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -126,7 +120,7 @@ export default function BusinessPage() {
                 <p className="text-sm text-gray-600 mb-6">Tour 3D + Landing</p>
                 
                 <div className="mb-8">
-                  <span className="text-4xl font-bold text-teal-600">RD$ 7,950</span>
+                  <span className="text-4xl font-bold text-teal-600">RD$ 8,950</span>
                 </div>
 
                 <ul className="space-y-3 mb-8">
