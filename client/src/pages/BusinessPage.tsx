@@ -1,268 +1,147 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { MessageCircle, Check, ArrowRight } from "lucide-react";
+/*
+  Hogar360 visual direction: minimalist editorial service studio.
+  Warm off-white surfaces, charcoal typography, restrained teal accents,
+  generous whitespace, fine rules, and architectural imagery used sparingly.
+*/
+import { ArrowRight, ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import BrandMark from "@/components/BrandMark";
+
+const backgroundImage = "/manus-storage/hogar360-minimal-architectural-bg_5212f6e5.jpg";
+
+const portfolio = [
+  { title: "Vista exterior", image: "https://framerusercontent.com/images/aojY4A8XMSYIrUdu8XbsXJspTw.jpeg" },
+  { title: "Acceso principal", image: "https://framerusercontent.com/images/Gvg7GhWAVR5QLMouuNf9o8Mw.jpeg" },
+  { title: "Detalle arquitectónico", image: "https://framerusercontent.com/images/eQWAYO7xnwJODSGeN4rGiflQLY.jpeg" },
+];
 
 export default function BusinessPage() {
   const yourWhatsApp = "+1 (849) 863‑1101";
-  const [formData, setFormData] = useState({
-    nombre: "",
-    email: "",
-    propiedad: "",
-  });
+  const [formData, setFormData] = useState({ nombre: "", email: "", propiedad: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     if (!formData.nombre || !formData.email || !formData.propiedad) {
       toast.error("Por favor completa todos los campos");
       return;
     }
 
     const message = encodeURIComponent(
-      `Hola, me interesa en los servicios de Hogar360.\n\nNombre: ${formData.nombre}\nCorreo: ${formData.email}\nPropiedad: ${formData.propiedad}`
+      `Hola, me interesa en los servicios de Hogar360.\n\nNombre: ${formData.nombre}\nCorreo: ${formData.email}\nPropiedad: ${formData.propiedad}`,
     );
-    
     window.open(`https://wa.me/${yourWhatsApp.replace(/\D/g, "")}?text=${message}`, "_blank");
     setFormData({ nombre: "", email: "", propiedad: "" });
     toast.success("Redirigiendo a WhatsApp...");
   };
 
+  const scrollToContact = () => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
-        <div className="container flex items-center justify-between py-4">
-          <Link href="/" className="text-sm font-medium text-teal-600 hover:text-teal-700 flex items-center gap-1">
-            ← Ver Propiedad Demo
+    <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+      <header className="sticky top-0 z-50 border-b border-[#1b2423]/10 bg-[#f7f6f2]/90 backdrop-blur-xl">
+        <div className="container flex items-center justify-between py-5">
+          <Link href="/hogar360" className="flex items-center gap-3 text-sm font-semibold tracking-tight text-[#1b2423]">
+            <BrandMark />
+            Hogar360
           </Link>
-          <div className="font-bold text-gray-900">Hogar360</div>
+          <nav className="flex items-center gap-5 text-xs font-medium uppercase tracking-[0.16em] text-[#1b2423]/55">
+            <a href="#portafolio" className="hidden transition-colors hover:text-[#008f86] sm:inline">Portafolio</a>
+            <a href="#servicios" className="hidden transition-colors hover:text-[#008f86] sm:inline">Servicios</a>
+            <a href="#contacto" className="text-[#008f86] transition-colors hover:text-[#006e68]">Hablemos</a>
+          </nav>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative h-96 bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('https://framerusercontent.com/images/wkTprlsrdB62blXtpLFmyJcM3vQ.jpeg')",
-            opacity: 0.7,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-        
-        <div className="relative h-full flex flex-col justify-center p-8 text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Tours 3D para vender más rápido en Santiago</h1>
-          <p className="text-lg text-gray-200 max-w-2xl">
-            Recorridos virtuales de alta fidelidad para que cada propiedad se visite, conecte y convenza antes de la primera cita.
-          </p>
-        </div>
-      </section>
+      <main>
+        <section className="relative overflow-hidden border-b border-[#1b2423]/10">
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${backgroundImage}')` }} />
+          <div className="absolute inset-0 bg-[#f7f6f2]/76" />
+          <div className="relative container grid min-h-[620px] items-end gap-12 py-20 lg:grid-cols-[1fr_0.46fr] lg:items-center lg:py-24">
+            <div className="max-w-4xl">
+              <p className="mb-6 text-xs font-bold uppercase tracking-[0.24em] text-[#008f86]">Hogar360 · Tours 3D para propiedades</p>
+              <h1 className="max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.06em] sm:text-6xl lg:text-8xl">Haz que una propiedad se entienda antes de visitarla.</h1>
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#1b2423]/65">Creamos recorridos 3D y landing pages que convierten cada inmueble en una experiencia clara, visual y lista para compartir.</p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a href="#contacto" className="inline-flex items-center gap-2 rounded-full bg-[#1b2423] px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-[#008f86]">Presentar mi propiedad <ArrowUpRight className="h-4 w-4" /></a>
+                <a href="#portafolio" className="inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-[#1b2423]/70 transition-colors hover:text-[#008f86]">Ver un caso <ArrowRight className="h-4 w-4" /></a>
+              </div>
+            </div>
+            <div className="max-w-xs justify-self-start border-l border-[#1b2423]/20 pl-6 lg:justify-self-end">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1b2423]/45">Para agentes</p>
+              <p className="mt-4 text-xl font-medium leading-snug tracking-tight">Menos fricción para explicar. Más contexto para decidir.</p>
+              <p className="mt-5 text-sm leading-relaxed text-[#1b2423]/55">Una presentación cuidada puede trabajar por tu propiedad incluso cuando tú no estás en la sala.</p>
+            </div>
+          </div>
+        </section>
 
-      {/* Portfolio Section */}
-      <section className="py-16">
-        <div className="container">
-          <div className="mb-12">
-            <p className="text-sm font-semibold text-teal-600 tracking-wide">PORTAFOLIO SELECCIONADO</p>
-            <h2 className="text-3xl font-bold mt-2">Vista Linda, desde todos sus ángulos</h2>
+        <section id="portafolio" className="container py-20 lg:py-28">
+          <div className="grid gap-8 lg:grid-cols-[0.6fr_1.4fr] lg:items-end">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#008f86]">01 · Portafolio</p>
+              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">Un caso real, explicado con intención.</h2>
+            </div>
+            <p className="max-w-xl justify-self-end text-base leading-relaxed text-[#1b2423]/60">Vista Linda es nuestra muestra de trabajo: un formato diseñado para ordenar la información de una propiedad y hacer que el siguiente paso sea más fácil.</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {[
-              { title: "Vista exterior", image: "https://framerusercontent.com/images/aojY4A8XMSYIrUdu8XbsXJspTw.jpeg" },
-              { title: "Acceso principal", image: "https://framerusercontent.com/images/Gvg7GhWAVR5QLMouuNf9o8Mw.jpeg" },
-              { title: "Detalle arquitectónico", image: "https://framerusercontent.com/images/eQWAYO7xnwJODSGeN4rGiflQLY.jpeg" },
-            ].map((card, idx) => (
-              <Link key={idx} href="/" className="group cursor-pointer">
-                <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="aspect-square overflow-hidden bg-gray-200">
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <p className="text-sm font-semibold text-teal-600 mb-1">DISPONIBLE</p>
-                    <h3 className="font-semibold text-gray-900">Vista Linda</h3>
-                    <p className="text-sm text-gray-600">{card.title}</p>
-                  </div>
-                </Card>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {portfolio.map((card) => (
+              <Link key={card.title} href="/" className="group block">
+                <article className="overflow-hidden border border-[#1b2423]/12 bg-white/45 transition-transform duration-300 group-hover:-translate-y-1">
+                  <div className="aspect-[4/3] overflow-hidden bg-[#d9d7cf]"><img src={card.image} alt={card.title} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /></div>
+                  <div className="flex items-center justify-between gap-4 px-5 py-5"><div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#008f86]">Caso Vista Linda</p><h3 className="mt-2 font-semibold tracking-tight">{card.title}</h3></div><ArrowUpRight className="h-4 w-4 text-[#1b2423]/45 transition-colors group-hover:text-[#008f86]" /></div>
+                </article>
               </Link>
             ))}
           </div>
+          <div className="mt-8 text-right"><Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#008f86] transition-colors hover:text-[#006e68]">Ver el caso completo <ArrowRight className="h-4 w-4" /></Link></div>
+        </section>
 
-          <div className="text-center">
-            <Link href="/" className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold">
-              Ver tour 3D completo <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container">
-          <div className="mb-12">
-            <p className="text-sm font-semibold text-teal-600 tracking-wide">SERVICIOS</p>
-            <h2 className="text-3xl font-bold mt-2">Elige la experiencia que mejor presenta tu propiedad</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Base Package */}
-            <Card className="border-2 border-teal-600 shadow-lg">
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Paquete Lanzamiento</h3>
-                <p className="text-sm text-gray-600 mb-6">Tour 3D + Landing</p>
-                
-                <div className="mb-8">
-                  <span className="text-4xl font-bold text-teal-600">RD$ 8,950</span>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {[
-                    "Tour 3D profesional",
-                    "Landing de la propiedad",
-                    "Link listo para compartir"
-                  ].map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-gray-700">
-                      <Check className="w-5 h-5 text-teal-600" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white py-6 font-semibold">
-                  Solicitar Cotización
-                </Button>
-              </div>
-            </Card>
-
-            {/* Drone Add-on */}
-            <div className="relative">
-              <Card className="border border-gray-200 shadow-lg opacity-60">
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-400 mb-2">Add-on Dron</h3>
-                  <p className="text-sm text-gray-400 mb-6">Fotos Aéreas</p>
-                  
-                  <div className="mb-8">
-                    <span className="text-4xl font-bold text-gray-400">RD$ 5,000</span>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {[
-                      "Tomas aéreas de propiedad",
-                      "Video vertical para redes",
-                      "Material optimizado"
-                    ].map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-gray-400">
-                        <Check className="w-5 h-5 text-gray-400" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Button disabled className="w-full bg-gray-300 text-gray-500 py-6 font-semibold cursor-not-allowed">
-                    Próximamente
-                  </Button>
-                </div>
-              </Card>
-              
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="bg-gray-700 text-white px-6 py-2 rounded-full font-semibold text-sm">
-                  Próximamente
-                </div>
-              </div>
+        <section id="servicios" className="border-y border-[#1b2423]/10 bg-[#eeece5]">
+          <div className="container py-20 lg:py-28">
+            <div className="mb-12 max-w-2xl"><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#008f86]">02 · Servicios</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Lo esencial para presentar mejor.</h2><p className="mt-5 text-base leading-relaxed text-[#1b2423]/60">Un paquete directo para poner tu próxima propiedad en circulación con una experiencia digital que se siente profesional desde el primer clic.</p></div>
+            <div className="grid gap-5 md:grid-cols-2">
+              <article className="border-2 border-[#008f86] bg-[#f7f6f2] p-8 shadow-[0_18px_50px_rgba(27,36,35,0.07)] sm:p-10">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#008f86]">Disponible</p>
+                <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em]">Paquete Lanzamiento</h3>
+                <p className="mt-2 text-sm text-[#1b2423]/55">Tour 3D + Landing</p>
+                <p className="mt-8 text-4xl font-semibold tracking-[-0.05em] text-[#008f86]">RD$ 8,950</p>
+                <ul className="mt-8 space-y-4 border-t border-[#1b2423]/12 pt-6">{["Tour 3D profesional", "Landing de la propiedad", "Link listo para compartir"].map((feature) => <li key={feature} className="flex items-center gap-3 text-sm text-[#1b2423]/70"><Check className="h-4 w-4 text-[#008f86]" />{feature}</li>)}</ul>
+                <Button onClick={scrollToContact} className="mt-9 w-full rounded-full bg-[#1b2423] py-6 font-semibold text-white hover:bg-[#008f86]">Solicitar cotización</Button>
+              </article>
+              <article className="relative border border-[#1b2423]/12 bg-white/45 p-8 opacity-65 sm:p-10">
+                <div className="absolute right-6 top-6 rounded-full border border-[#1b2423]/15 bg-[#f7f6f2] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#1b2423]/60">Próximamente</div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#1b2423]/45">Próxima etapa</p>
+                <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em]">Add-on Dron</h3>
+                <p className="mt-2 text-sm text-[#1b2423]/50">Fotos aéreas</p>
+                <p className="mt-8 text-4xl font-semibold tracking-[-0.05em] text-[#1b2423]/45">RD$ 5,000</p>
+                <ul className="mt-8 space-y-4 border-t border-[#1b2423]/12 pt-6">{["Tomas aéreas de propiedad", "Video vertical para redes", "Material optimizado"].map((feature) => <li key={feature} className="flex items-center gap-3 text-sm text-[#1b2423]/45"><Check className="h-4 w-4" />{feature}</li>)}</ul>
+                <Button disabled className="mt-9 w-full rounded-full bg-[#1b2423]/10 py-6 font-semibold text-[#1b2423]/45">Próximamente</Button>
+              </article>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section className="py-16">
-        <div className="container">
-          <div className="max-w-2xl mx-auto">
-            <div className="mb-12">
-              <p className="text-sm font-semibold text-teal-600 tracking-wide">CONTACTO</p>
-              <h2 className="text-3xl font-bold mt-2">Hablemos de tu propiedad</h2>
-              <p className="text-gray-600 mt-4">
-                Una visita virtual puede cambiar la primera impresión. Cuéntanos sobre tu inmueble 
-                y te enviaremos una propuesta personalizada.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Tu nombre</label>
-                  <Input
-                    placeholder="Tu nombre"
-                    value={formData.nombre}
-                    onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                    className="border-gray-300"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Correo electrónico</label>
-                  <Input
-                    type="email"
-                    placeholder="tu@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="border-gray-300"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Tipo de propiedad y ubicación</label>
-                  <Textarea
-                    placeholder="Ej: Casa de 3 habitaciones en Santiago"
-                    value={formData.propiedad}
-                    onChange={(e) => setFormData({ ...formData, propiedad: e.target.value })}
-                    className="border-gray-300 min-h-24"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full bg-gray-700 hover:bg-gray-800 text-white py-6 font-semibold"
-                >
-                  Enviar solicitud
-                </Button>
-              </form>
-
-              <div className="flex flex-col justify-center">
-                <div className="bg-teal-50 rounded-lg p-8 mb-6">
-                  <h3 className="font-semibold text-gray-900 mb-4">O contacta directamente</h3>
-                  <Button
-                    onClick={() => {
-                      const message = encodeURIComponent("Hola, estoy interesado en los servicios de Hogar360.");
-                      window.open(`https://wa.me/${yourWhatsApp.replace(/\D/g, "")}?text=${message}`, "_blank");
-                    }}
-                    className="w-full bg-teal-600 hover:bg-teal-700 text-white py-6 font-semibold flex items-center justify-center gap-2"
-                  >
-                    <MessageCircle className="w-5 h-5" />
-                    Cotizar por WhatsApp
-                  </Button>
-                </div>
+        <section id="contacto" className="container py-20 lg:py-28">
+          <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+            <div><p className="text-xs font-bold uppercase tracking-[0.22em] text-[#008f86]">03 · Contacto</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Hablemos de tu próxima propiedad.</h2><p className="mt-5 max-w-md text-base leading-relaxed text-[#1b2423]/60">Cuéntanos lo esencial y te contactaremos por WhatsApp con una propuesta clara.</p><div className="mt-10 border-l border-[#008f86] pl-5 text-sm leading-relaxed text-[#1b2423]/55">Respuesta directa · Propuesta personalizada · Link listo para compartir</div></div>
+            <form onSubmit={handleSubmit} className="border-t border-[#1b2423]/15 pt-8">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="text-sm font-semibold">Tu nombre<Input placeholder="Tu nombre" value={formData.nombre} onChange={(event) => setFormData({ ...formData, nombre: event.target.value })} className="mt-2 h-12 rounded-none border-0 border-b border-[#1b2423]/20 bg-transparent px-0 shadow-none focus-visible:ring-0 focus-visible:border-[#008f86]" /></label>
+                <label className="text-sm font-semibold">Correo electrónico<Input type="email" placeholder="tu@email.com" value={formData.email} onChange={(event) => setFormData({ ...formData, email: event.target.value })} className="mt-2 h-12 rounded-none border-0 border-b border-[#1b2423]/20 bg-transparent px-0 shadow-none focus-visible:ring-0 focus-visible:border-[#008f86]" /></label>
               </div>
-            </div>
+              <label className="mt-7 block text-sm font-semibold">Tipo de propiedad y ubicación<Textarea placeholder="Ej: Casa de 3 habitaciones en Santiago" value={formData.propiedad} onChange={(event) => setFormData({ ...formData, propiedad: event.target.value })} className="mt-2 min-h-28 resize-none rounded-none border-0 border-b border-[#1b2423]/20 bg-transparent px-0 shadow-none focus-visible:ring-0 focus-visible:border-[#008f86]" /></label>
+              <div className="mt-8 flex flex-wrap items-center gap-5"><Button type="submit" className="rounded-full bg-[#1b2423] px-7 py-6 font-semibold text-white hover:bg-[#008f86]">Enviar solicitud <ArrowUpRight className="ml-2 h-4 w-4" /></Button><button type="button" onClick={() => { const message = encodeURIComponent("Hola, estoy interesado en los servicios de Hogar360."); window.open(`https://wa.me/${yourWhatsApp.replace(/\D/g, "")}?text=${message}`, "_blank"); }} className="inline-flex items-center gap-2 text-sm font-semibold text-[#008f86] transition-colors hover:text-[#006e68]"><MessageCircle className="h-4 w-4" />Cotizar por WhatsApp</button></div>
+            </form>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-8">
-        <div className="container text-center text-sm">
-          <p>Hogar360 - Tours 3D para Propiedades en Santiago, RD</p>
-          <p className="mt-2">© 2026 Todos los derechos reservados</p>
-        </div>
-      </footer>
+      <footer className="bg-[#101b27] py-8 text-[#cbd4d0]/60"><div className="container flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between"><span>Hogar360 · Tours 3D para propiedades en Santiago, RD</span><span>© 2026 Todos los derechos reservados</span></div></footer>
     </div>
   );
 }
