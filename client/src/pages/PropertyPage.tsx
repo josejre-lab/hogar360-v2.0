@@ -3,10 +3,11 @@
   Warm off-white surfaces, charcoal type, restrained teal accents,
   generous whitespace, thin rules, and calm architectural imagery.
 */
-import { ArrowUpRight, ChevronRight, Play, X } from "lucide-react";
+import { ArrowUpRight, ChevronRight, MessageCircle, Play, ScanLine, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
-import BrandMark from "@/components/BrandMark";
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
 
 const backgroundImage = "/manus-storage/hogar360-minimal-architectural-bg_5212f6e5.jpg";
 
@@ -29,18 +30,7 @@ export default function PropertyPage() {
 
   return (
     <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
-      <header className="sticky top-0 z-50 border-b border-[#1b2423]/10 bg-[#f7f6f2]/90 backdrop-blur-xl">
-        <div className="container flex items-center justify-between py-5">
-          <Link href="/hogar360" className="flex items-center gap-3 text-sm font-semibold tracking-tight text-[#1b2423] transition-colors hover:text-[#008f86]">
-            <BrandMark />
-            Hogar360
-          </Link>
-          <nav className="flex items-center gap-5 text-xs font-medium uppercase tracking-[0.16em] text-[#1b2423]/55">
-            <span className="hidden sm:inline">Caso de estudio</span>
-            <Link href="/hogar360" className="text-[#008f86] transition-colors hover:text-[#006e68]">Servicios</Link>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader active="casos" />
 
       <main>
         <section className="relative overflow-hidden border-b border-[#1b2423]/10">
@@ -49,20 +39,21 @@ export default function PropertyPage() {
             style={{ backgroundImage: `url('${backgroundImage}')` }}
           />
           <div className="absolute inset-0 bg-[#f7f6f2]/78" />
+          <div className="spatial-orbit absolute -right-8 top-28 h-56 w-56 opacity-65 before:-left-16 before:-top-12 after:left-7 after:top-0 lg:right-[18%]" />
           <div className="relative container grid min-h-[570px] items-end gap-12 py-20 lg:grid-cols-[1.05fr_0.55fr] lg:items-center lg:py-24">
             <div className="max-w-3xl">
               <p className="mb-6 text-xs font-bold uppercase tracking-[0.24em] text-[#008f86]">Caso de estudio · Vista Linda</p>
               <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] text-[#1b2423] sm:text-6xl lg:text-7xl">
-                Una propiedad presentada como una experiencia.
+                Vista Linda: una propiedad presentada como una experiencia.
               </h1>
               <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#1b2423]/65">
-                Una muestra de cómo Hogar360 convierte la información de una propiedad en una presentación digital clara, visual y lista para compartir.
+                Un caso de estudio de cómo Hogar360 reúne recorrido, galería e información en una presentación digital clara, visual y lista para compartir.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a href="#recorrido" className="inline-flex items-center gap-2 rounded-full bg-[#1b2423] px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-[#008f86]">
                   Ver el proyecto <ArrowUpRight className="h-4 w-4" />
                 </a>
-                <Link href="/hogar360" className="inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-[#1b2423]/70 transition-colors hover:text-[#008f86]">
+                <Link href="/" className="inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-[#1b2423]/70 transition-colors hover:text-[#008f86]">
                   Conocer Hogar360 <ChevronRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -74,6 +65,20 @@ export default function PropertyPage() {
                 Que un agente pueda mostrar el potencial de una propiedad antes de la primera visita.
               </p>
               <p className="mt-5 text-sm leading-relaxed text-[#1b2423]/55">Tour 3D · Landing de propiedad · Galería visual</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#1b2423]/10 bg-[#eeece5]">
+          <div className="container grid gap-8 py-12 md:grid-cols-[0.7fr_1.3fr] md:items-center">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#008f86]">Qué demuestra este caso</p>
+              <p className="mt-3 max-w-xs text-sm leading-relaxed text-[#1b2423]/60">Una experiencia diseñada para que un prospecto entienda mejor la propiedad antes de escribir o coordinar una visita.</p>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-3">
+              <div className="border-l border-[#008f86] pl-4"><span className="capture-label">Punto 01</span><ScanLine className="mt-3 h-4 w-4 text-[#008f86]" /><p className="mt-4 text-sm font-semibold">Exploración 3D</p><p className="mt-2 text-xs leading-relaxed text-[#1b2423]/55">El prospecto recorre los espacios con más contexto.</p></div>
+              <div className="border-l border-[#008f86] pl-4"><span className="capture-label">Punto 02</span><ChevronRight className="mt-3 h-4 w-4 text-[#008f86]" /><p className="mt-4 text-sm font-semibold">Información clara</p><p className="mt-2 text-xs leading-relaxed text-[#1b2423]/55">Los detalles relevantes se reúnen en un solo enlace.</p></div>
+              <div className="border-l border-[#008f86] pl-4"><span className="capture-label">Punto 03</span><MessageCircle className="mt-3 h-4 w-4 text-[#008f86]" /><p className="mt-4 text-sm font-semibold">Contacto integrado</p><p className="mt-2 text-xs leading-relaxed text-[#1b2423]/55">El formato puede dirigir cada consulta al agente responsable.</p></div>
             </div>
           </div>
         </section>
@@ -92,9 +97,9 @@ export default function PropertyPage() {
           <div className="mt-12 overflow-hidden border border-[#1b2423]/12 bg-[#101b27] shadow-[0_24px_80px_rgba(27,36,35,0.12)]">
             <div className="flex min-h-[320px] flex-col items-center justify-center px-6 py-16 text-center text-white sm:min-h-[440px]">
               <span className="mb-5 grid h-14 w-14 place-items-center rounded-full border border-white/25 text-[#8ce3d6]"><Play className="ml-1 h-5 w-5" /></span>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8ce3d6]">Matterport en preparación</p>
-              <h3 className="mt-4 max-w-md text-3xl font-semibold tracking-tight">El tour 3D final se añadirá aquí.</h3>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">Este espacio ya está preparado para recibir el enlace de Matterport de Vista Linda.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8ce3d6]">Recorrido 3D en preparación</p>
+              <h3 className="mt-4 max-w-md text-3xl font-semibold tracking-tight">El tour 3D de Vista Linda estará disponible aquí.</h3>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">Este módulo se integrará con el recorrido final para que el visitante pueda explorar la propiedad desde cualquier dispositivo.</p>
             </div>
           </div>
         </section>
@@ -128,7 +133,8 @@ export default function PropertyPage() {
                 aria-label={`Ampliar ${photo.title}`}
                 className={`group relative overflow-hidden bg-[#d9d7cf] text-left focus:outline-none focus:ring-2 focus:ring-[#008f86] focus:ring-offset-2 ${idx === 0 ? "col-span-2 row-span-2 min-h-[330px] md:min-h-[520px]" : "aspect-square"}`}
               >
-                <img src={photo.src} alt={photo.title} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img src={photo.src} alt={photo.title} loading="eager" className="h-full w-full object-cover saturate-[0.86] sepia-[0.06] transition duration-500 group-hover:scale-105 group-hover:saturate-100" />
+                <span className="absolute left-3 top-3 rounded-full bg-[#f7f6f2]/92 px-2.5 py-1 opacity-0 backdrop-blur transition-opacity group-hover:opacity-100"><span className="capture-label">Vista 360</span></span>
                 <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-4 pt-12 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">{photo.title}</span>
               </button>
             ))}
@@ -138,7 +144,7 @@ export default function PropertyPage() {
         <section className="container border-t border-[#1b2423]/15 py-16 lg:py-20">
           <div className="grid gap-8 md:grid-cols-3">
             {propertyFacts.map((fact) => (
-              <div key={fact.label} className="border-l border-[#008f86] pl-5">
+              <div key={fact.label} className="relative border-l border-[#008f86] pl-5"><span className="absolute -left-[3px] top-0 h-1.5 w-1.5 rounded-full bg-[#008f86] shadow-[0_0_0_4px_rgba(0,143,134,0.12)]" />
                 <p className="text-3xl font-semibold tracking-[-0.04em] text-[#1b2423]">{fact.value}</p>
                 <p className="mt-2 text-sm text-[#1b2423]/55">{fact.label}</p>
               </div>
@@ -153,10 +159,10 @@ export default function PropertyPage() {
           <div className="container flex flex-col justify-between gap-8 py-16 sm:flex-row sm:items-end lg:py-20">
             <div className="max-w-xl">
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#8ce3d6]">El siguiente proyecto puede ser el tuyo</p>
-              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">Presenta tu próxima propiedad con más claridad.</h2>
+              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">Dale a tu próxima propiedad una presentación que se entienda mejor.</h2>
             </div>
-            <Link href="/hogar360" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#8ce3d6] px-6 py-3 text-sm font-bold text-[#1b2423] transition-transform hover:-translate-y-0.5 hover:bg-white">
-              Ver servicios <ArrowUpRight className="h-4 w-4" />
+            <Link href="/contacto" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#8ce3d6] px-6 py-3 text-sm font-bold text-[#1b2423] transition-transform hover:-translate-y-0.5 hover:bg-white">
+              Cotizar una experiencia similar <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
         </section>
@@ -171,12 +177,7 @@ export default function PropertyPage() {
         </div>
       )}
 
-      <footer className="bg-[#101b27] py-8 text-[#cbd4d0]/60">
-        <div className="container flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <span>Hogar360 · Visualización para propiedades</span>
-          <Link href="/hogar360" className="text-[#8ce3d6] transition-colors hover:text-white">Volver a servicios</Link>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

@@ -6,13 +6,20 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import PropertyPage from "./pages/PropertyPage";
 import BusinessPage from "./pages/BusinessPage";
+import ContactPage from "./pages/ContactPage";
+import InsightsPage from "./pages/InsightsPage";
+import InsightArticlePage from "./pages/InsightArticlePage";
 
 
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={PropertyPage} />
+      <Route path={"/casos/vista-linda"} component={PropertyPage} />
       <Route path={"/hogar360"} component={BusinessPage} />
+      <Route path={"/contacto"} component={ContactPage} />
+      <Route path={"/insights/:slug"} component={InsightArticlePage} />
+      <Route path={"/insights"} component={InsightsPage} />
+      <Route path={"/"} component={BusinessPage} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

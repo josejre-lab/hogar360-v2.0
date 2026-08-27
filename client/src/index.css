@@ -134,6 +134,59 @@
 }
 
 @layer components {
+  /* Hogar360 spatial system: a restrained 360-orbit device used on case imagery, facts, and page transitions. */
+  .spatial-orbit {
+    position: relative;
+  }
+
+  .spatial-orbit::before {
+    content: "";
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid rgb(0 143 134 / 0.25);
+    border-radius: 9999px;
+    pointer-events: none;
+  }
+
+  .spatial-orbit::after {
+    content: "";
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: #008f86;
+    box-shadow: 0 0 0 5px rgb(0 143 134 / 0.11);
+    pointer-events: none;
+  }
+
+  .capture-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #008f86;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .capture-label::before {
+    content: "";
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    border: 1px solid currentColor;
+    border-radius: 9999px;
+    box-shadow: inset 0 0 0 2px #f7f6f2;
+  }
+
+  .spatial-rules {
+    background-image: linear-gradient(90deg, rgb(0 143 134 / 0.16) 1px, transparent 1px), linear-gradient(0deg, rgb(0 143 134 / 0.10) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
   /**
    * Custom container utility that centers content and adds responsive padding.
    *
@@ -174,4 +227,14 @@
       max-width: 1280px; /* Standard content width */
     }
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spatial-orbit::before {
+    animation: hogar-orbit 16s linear infinite;
+  }
+}
+
+@keyframes hogar-orbit {
+  to { transform: rotate(360deg); }
 }

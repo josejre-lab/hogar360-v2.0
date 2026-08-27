@@ -30,3 +30,23 @@ The Vista Linda page is a promotional case study for pitching real-estate agents
 - [ ] Implementation pending background asset preparation.
 - [ ] User requested a professional replacement for the existing house-photo background.
 - [ ] Previous published checkpoint: `f0f81005`.
+
+## Niero Template Adaptation
+
+- [x] Inspect the public Niero Framer template and record its page, navigation, and visual patterns.
+- [x] Map the template into Hogar360’s homepage, case-study, services, and blog structure.
+- [x] Present a keep-change-remove blueprint for user approval before rebuilding.
+- [x] Implement the approved template-based page system and navigation.
+- [x] Add the educational blog index, article layout, and approved starter content.
+- [x] Verify the completed template-based redesign.
+
+## Approved Agent-Focused Direction
+
+- [x] Replace the business-page hero with the approved agent benefit headline, subheadline, local-market message, and two CTAs.
+- [x] Add the approved traditional-listing versus Hogar360 presentation framework without making unsupported sales guarantees.
+- [x] Rebuild the launch-offer card with the crossed-out RD$14,950 regular price, dominant RD$8,950 price, RD$6,000 savings, 40% OFF, and temporary-offer wording.
+- [x] Update service copy to emphasize professional presentation, informed interest, and better-qualified visits rather than the technology alone.
+- [x] Reframe Vista Linda as the flagship case study and ensure its paths return agents to Hogar360 contact.
+- [x] Add a simple four-step process tailored to property visualization work.
+- [x] Create the Niero-inspired Insights index and three research-grounded starter articles.
+- [x] Verify the streamlined WhatsApp conversion path and mobile presentation.
