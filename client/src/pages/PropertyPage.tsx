@@ -8,6 +8,9 @@ import { Link } from "wouter";
 import { useState } from "react";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import Seo from "@/components/Seo";
+import { trackEvent } from "@/lib/analytics";
+import { caseStudyStructuredData } from "@/lib/seo";
 
 const backgroundImage = "/manus-storage/hogar360-minimal-architectural-bg_5212f6e5.jpg";
 
@@ -30,6 +33,7 @@ export default function PropertyPage() {
 
   return (
     <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+      <Seo title="Vista Linda: caso de estudio de recorrido 3D | Hogar360" description="Descubre cómo Hogar360 reúne recorrido 3D, galería e información de una propiedad en una experiencia clara para agentes inmobiliarios." path="/casos/vista-linda" image="/manus-storage/vista-linda-hero_e01d4f82.png" structuredData={caseStudyStructuredData} />
       <SiteHeader active="casos" />
 
       <main>
@@ -129,7 +133,7 @@ export default function PropertyPage() {
             {galleryPhotos.map((photo, idx) => (
               <button
                 key={photo.src}
-                onClick={() => setLightboxImage(photo.src)}
+                onClick={() => { trackEvent("case_gallery_open", { item_number: idx + 1 }); setLightboxImage(photo.src); }}
                 aria-label={`Ampliar ${photo.title}`}
                 className={`group relative overflow-hidden bg-[#d9d7cf] text-left focus:outline-none focus:ring-2 focus:ring-[#008f86] focus:ring-offset-2 ${idx === 0 ? "col-span-2 row-span-2 min-h-[330px] md:min-h-[520px]" : "aspect-square"}`}
               >
@@ -161,7 +165,7 @@ export default function PropertyPage() {
               <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#8ce3d6]">El siguiente proyecto puede ser el tuyo</p>
               <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">Dale a tu próxima propiedad una presentación que se entienda mejor.</h2>
             </div>
-            <Link href="/contacto" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#8ce3d6] px-6 py-3 text-sm font-bold text-[#1b2423] transition-transform hover:-translate-y-0.5 hover:bg-white">
+            <Link onClick={() => trackEvent("case_study_quote_click", { placement: "case_study_cta" })} href="/contacto" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#8ce3d6] px-6 py-3 text-sm font-bold text-[#1b2423] transition-transform hover:-translate-y-0.5 hover:bg-white">
               Cotizar una experiencia similar <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>

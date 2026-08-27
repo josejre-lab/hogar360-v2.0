@@ -7,15 +7,18 @@ import { Link, useRoute } from "wouter";
 import { getInsightArticle } from "@/lib/insights";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import Seo from "@/components/Seo";
+import { articleStructuredData } from "@/lib/seo";
 
 export default function InsightArticlePage() {
   const [, params] = useRoute("/insights/:slug");
   const article = getInsightArticle(params?.slug ?? "");
 
-  if (!article) return <div className="min-h-screen bg-[#f7f6f2]"><SiteHeader /><main className="container py-28"><p className="text-sm text-[#1b2423]/60">No encontramos este artículo.</p><Link href="/insights" className="mt-5 inline-flex text-sm font-semibold text-[#008f86]">Volver a Insights</Link></main><SiteFooter /></div>;
+  if (!article) return <div className="min-h-screen bg-[#f7f6f2]"><Seo title="Artículo no encontrado | Hogar360" description="El artículo solicitado no está disponible." path="/404" /><SiteHeader /><main className="container py-28"><p className="text-sm text-[#1b2423]/60">No encontramos este artículo.</p><Link href="/insights" className="mt-5 inline-flex text-sm font-semibold text-[#008f86]">Volver a Insights</Link></main><SiteFooter /></div>;
 
   return (
     <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+      <Seo title={`${article.title} | Hogar360 Insights`} description={article.summary} path={`/insights/${article.slug}`} image={article.image} structuredData={articleStructuredData(article)} type="article" />
       <SiteHeader active="insights" />
       <main>
         <article>

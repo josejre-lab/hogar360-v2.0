@@ -12,6 +12,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import Seo from "@/components/Seo";
+import { trackEvent } from "@/lib/analytics";
+import { homeStructuredData } from "@/lib/seo";
+import { whatsappLink } from "@/lib/site";
 
 const backgroundImage = "/manus-storage/hogar360-minimal-architectural-bg_5212f6e5.jpg";
 
@@ -37,11 +41,11 @@ const workflow = [
 ];
 
 export default function BusinessPage() {
-  const yourWhatsApp = "+1 (849) 863‑1101";
   const [formData, setFormData] = useState({ nombre: "", email: "", propiedad: "" });
 
-  const openWhatsApp = (message: string) => {
-    window.open(`https://wa.me/${yourWhatsApp.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`, "_blank");
+  const openWhatsApp = (message: string, placement: string) => {
+    trackEvent("whatsapp_quote_click", { placement });
+    window.open(whatsappLink(message), "_blank");
   };
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -50,15 +54,20 @@ export default function BusinessPage() {
       toast.error("Por favor completa los tres campos.");
       return;
     }
-    openWhatsApp(`Hola, me interesa el Paquete Lanzamiento de Hogar360.\n\nNombre: ${formData.nombre}\nCorreo: ${formData.email}\nPropiedad: ${formData.propiedad}`);
+    trackEvent("contact_form_submit", { placement: "homepage_form" });
+    openWhatsApp(`Hola, me interesa el Paquete Lanzamiento de Hogar360.\n\nNombre: ${formData.nombre}\nCorreo: ${formData.email}\nPropiedad: ${formData.propiedad}`, "homepage_form");
     setFormData({ nombre: "", email: "", propiedad: "" });
     toast.success("Abriendo WhatsApp...");
   };
 
-  const openLaunchOffer = () => openWhatsApp("Hola, quiero aprovechar el precio de lanzamiento de Hogar360 para una propiedad.");
+  const openLaunchOffer = () => {
+    trackEvent("launch_offer_click", { placement: "pricing_card" });
+    openWhatsApp("Hola, quiero aprovechar el precio de lanzamiento de Hogar360 para una propiedad.", "pricing_card");
+  };
 
   return (
     <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+      <Seo title="Recorridos 3D para propiedades en Santiago | Hogar360" description="Recorridos 3D profesionales y landing pages inmobiliarias para agentes y proyectos en Santiago, República Dominicana." path="/" structuredData={homeStructuredData} />
       <SiteHeader active="inicio" />
 
       <main>
@@ -73,8 +82,8 @@ export default function BusinessPage() {
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#1b2423]/70">Recorridos 3D profesionales + landing personalizada para que tus propiedades destaquen, generen más interés y lleguen a la visita clientes que ya conocen el espacio.</p>
               <p className="mt-5 text-sm font-medium text-[#1b2423]/55">Para agentes inmobiliarios y proyectos en Santiago y alrededores.</p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
-                <a href="#como-funciona" className="inline-flex items-center gap-2 rounded-full bg-[#1b2423] px-6 py-3.5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#008f86] active:scale-[0.97]">Ver cómo funciona <ArrowRight className="h-4 w-4" /></a>
-                <Link href="/casos/vista-linda" className="inline-flex items-center gap-2 px-2 py-3.5 text-sm font-semibold text-[#1b2423]/75 transition-colors hover:text-[#008f86]">Ver propiedad en 3D <ArrowUpRight className="h-4 w-4" /></Link>
+                <a onClick={() => trackEvent("hero_how_it_works_click", { placement: "homepage_hero" })} href="#como-funciona" className="inline-flex items-center gap-2 rounded-full bg-[#1b2423] px-6 py-3.5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#008f86] active:scale-[0.97]">Ver cómo funciona <ArrowRight className="h-4 w-4" /></a>
+                <Link onClick={() => trackEvent("case_study_click", { placement: "homepage_hero" })} href="/casos/vista-linda" className="inline-flex items-center gap-2 px-2 py-3.5 text-sm font-semibold text-[#1b2423]/75 transition-colors hover:text-[#008f86]">Ver propiedad en 3D <ArrowUpRight className="h-4 w-4" /></Link>
               </div>
             </div>
             <div className="max-w-[270px] justify-self-start border-l border-[#1b2423]/20 pl-6 lg:justify-self-end">
@@ -107,7 +116,7 @@ export default function BusinessPage() {
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {portfolio.map((card) => (
-              <Link key={card.title} href="/casos/vista-linda" className="group block">
+              <Link onClick={() => trackEvent("case_study_click", { placement: "portfolio_card" })} key={card.title} href="/casos/vista-linda" className="group block">
                 <article className="overflow-hidden border border-[#1b2423]/12 bg-white/45 transition duration-300 group-hover:-translate-y-1 group-hover:border-[#008f86]/55">
                   <div className="relative aspect-[4/3] overflow-hidden bg-[#d9d7cf]"><img src={card.image} alt={card.title} loading="lazy" className="h-full w-full object-cover saturate-[0.88] sepia-[0.06] transition duration-500 group-hover:scale-105 group-hover:saturate-100" /><div className="absolute left-4 top-4 rounded-full bg-[#f7f6f2]/90 px-2.5 py-1 backdrop-blur"><span className="capture-label">Vista 360</span></div><span className="absolute bottom-3 right-4 text-[10px] font-bold tracking-[0.16em] text-white drop-shadow-md">0{portfolio.indexOf(card) + 1}</span></div>
                   <div className="flex items-end justify-between gap-4 px-5 py-5"><div><p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#008f86]">Caso Vista Linda</p><h3 className="mt-2 font-semibold tracking-tight">{card.title}</h3><p className="mt-1 text-sm text-[#1b2423]/52">{card.detail}</p></div><ArrowUpRight className="mb-1 h-4 w-4 text-[#1b2423]/45 transition-colors group-hover:text-[#008f86]" /></div>
@@ -115,7 +124,7 @@ export default function BusinessPage() {
               </Link>
             ))}
           </div>
-          <div className="mt-8 text-right"><Link href="/casos/vista-linda" className="inline-flex items-center gap-2 text-sm font-semibold text-[#008f86] transition-colors hover:text-[#006e68]">Explorar el caso completo <ArrowRight className="h-4 w-4" /></Link></div>
+          <div className="mt-8 text-right"><Link onClick={() => trackEvent("case_study_click", { placement: "portfolio_text_link" })} href="/casos/vista-linda" className="inline-flex items-center gap-2 text-sm font-semibold text-[#008f86] transition-colors hover:text-[#006e68]">Explorar el caso completo <ArrowRight className="h-4 w-4" /></Link></div>
         </section>
 
         <section id="como-funciona" className="border-y border-[#1b2423]/10 bg-[#101b27] text-white">
@@ -170,7 +179,7 @@ export default function BusinessPage() {
 
         <section id="contacto" className="container py-20 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-            <div><p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#008f86]">04 · Contacto</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Cotiza sin complicarte.</h2><p className="mt-5 max-w-md text-base leading-relaxed text-[#1b2423]/60">Puedes escribirnos directamente por WhatsApp o dejarnos lo esencial de tu propiedad. Te respondemos con una propuesta clara.</p><button type="button" onClick={() => openWhatsApp("Hola, quiero cotizar una experiencia Hogar360 para una propiedad.")} className="mt-9 inline-flex items-center gap-2 rounded-full border border-[#008f86] px-5 py-3 text-sm font-semibold text-[#008f86] transition-colors hover:bg-[#008f86] hover:text-white"><MessageCircle className="h-4 w-4" />Cotizar por WhatsApp</button></div>
+            <div><p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#008f86]">04 · Contacto</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Cotiza sin complicarte.</h2><p className="mt-5 max-w-md text-base leading-relaxed text-[#1b2423]/60">Puedes escribirnos directamente por WhatsApp o dejarnos lo esencial de tu propiedad. Te respondemos con una propuesta clara.</p><button type="button" onClick={() => openWhatsApp("Hola, quiero cotizar una experiencia Hogar360 para una propiedad.", "homepage_contact")} className="mt-9 inline-flex items-center gap-2 rounded-full border border-[#008f86] px-5 py-3 text-sm font-semibold text-[#008f86] transition-colors hover:bg-[#008f86] hover:text-white"><MessageCircle className="h-4 w-4" />Cotizar por WhatsApp</button></div>
             <form onSubmit={handleSubmit} className="border-t border-[#1b2423]/15 pt-8 lg:border-l lg:pl-12 lg:pt-0">
               <div className="grid gap-6 sm:grid-cols-2"><label className="text-sm font-semibold">Tu nombre<Input placeholder="Tu nombre" value={formData.nombre} onChange={(event) => setFormData({ ...formData, nombre: event.target.value })} className="mt-3 h-12 rounded-none border-0 border-b border-[#1b2423]/20 bg-transparent px-0 shadow-none focus-visible:border-[#008f86] focus-visible:ring-0" /></label><label className="text-sm font-semibold">Correo electrónico<Input type="email" placeholder="tu@email.com" value={formData.email} onChange={(event) => setFormData({ ...formData, email: event.target.value })} className="mt-3 h-12 rounded-none border-0 border-b border-[#1b2423]/20 bg-transparent px-0 shadow-none focus-visible:border-[#008f86] focus-visible:ring-0" /></label></div>
               <label className="mt-8 block text-sm font-semibold">Tipo de propiedad y ubicación<Textarea placeholder="Ej: Apartamento de 2 habitaciones en Santiago" value={formData.propiedad} onChange={(event) => setFormData({ ...formData, propiedad: event.target.value })} className="mt-3 min-h-28 resize-none rounded-none border-0 border-b border-[#1b2423]/20 bg-transparent px-0 shadow-none focus-visible:border-[#008f86] focus-visible:ring-0" /></label>

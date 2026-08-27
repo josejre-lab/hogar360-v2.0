@@ -5,6 +5,7 @@
 import { Menu } from "lucide-react";
 import { Link } from "wouter";
 import BrandMark from "@/components/BrandMark";
+import { trackEvent } from "@/lib/analytics";
 
 type SiteHeaderProps = {
   active?: "inicio" | "casos" | "servicios" | "insights" | "contacto";
@@ -26,9 +27,9 @@ export default function SiteHeader({ active }: SiteHeaderProps) {
           <Link href="/casos/vista-linda" className={navItem(active === "casos")}>Casos</Link>
           <a href="/#servicios" className={navItem(active === "servicios")}>Servicios</a>
           <Link href="/insights" className={navItem(active === "insights")}>Insights</Link>
-          <Link href="/contacto" className={`rounded-full border px-4 py-2 ${active === "contacto" ? "border-[#008f86] bg-[#008f86] text-white" : "border-[#1b2423]/18 text-[#1b2423] hover:border-[#008f86] hover:bg-[#008f86] hover:text-white"}`}>Cotizar</Link>
+          <Link onClick={() => trackEvent("header_quote_click", { location: "desktop_header" })} href="/contacto" className={`rounded-full border px-4 py-2 ${active === "contacto" ? "border-[#008f86] bg-[#008f86] text-white" : "border-[#1b2423]/18 text-[#1b2423] hover:border-[#008f86] hover:bg-[#008f86] hover:text-white"}`}>Cotizar</Link>
         </nav>
-        <Link href="/contacto" className="grid h-9 w-9 place-items-center rounded-full border border-[#1b2423]/15 text-[#1b2423] sm:hidden" aria-label="Solicitar cotización">
+        <Link onClick={() => trackEvent("header_quote_click", { location: "mobile_header" })} href="/contacto" className="grid h-9 w-9 place-items-center rounded-full border border-[#1b2423]/15 text-[#1b2423] sm:hidden" aria-label="Solicitar cotización">
           <Menu className="h-4 w-4" />
         </Link>
       </div>

@@ -50,3 +50,12 @@ The Vista Linda page is a promotional case study for pitching real-estate agents
 - [x] Add a simple four-step process tailored to property visualization work.
 - [x] Create the Niero-inspired Insights index and three research-grounded starter articles.
 - [x] Verify the streamlined WhatsApp conversion path and mobile presentation.
+
+## SEO, Local Discovery, and Measurement
+
+- [x] Audit existing metadata, robots directives, sitemap coverage, canonical URLs, page performance, and current analytics signals.
+- [x] Define the target service, geography, and keyword themes for accurate local search discovery.
+- [x] Add unique titles, descriptions, canonical URLs, Open Graph metadata, sitemap, and robots instructions.
+- [x] Add Organization, LocalBusiness/ProfessionalService, Service, WebSite, and Article structured data where accurate.
+- [x] Track high-intent conversion events: WhatsApp quotes, contact-form submissions, case-study views, and launch-offer clicks.
+- [x] Validate indexing and structured-data outputs and prepare Google Search Console and Analytics configuration steps.

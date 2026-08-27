@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import PropertyPage from "./pages/PropertyPage";
 import BusinessPage from "./pages/BusinessPage";
 import ContactPage from "./pages/ContactPage";
@@ -40,6 +41,7 @@ function App() {
         // switchable
       >
         <TooltipProvider>
+          <GoogleAnalytics />
           <Toaster />
           <Router />
         </TooltipProvider>

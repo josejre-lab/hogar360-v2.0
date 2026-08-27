@@ -5,6 +5,7 @@
 export type InsightArticle = {
   slug: string;
   category: string;
+  datePublished: string;
   title: string;
   summary: string;
   image: string;
@@ -17,6 +18,7 @@ export const insightArticles: InsightArticle[] = [
   {
     slug: "la-visita-empieza-antes-de-la-visita",
     category: "GUÍA",
+    datePublished: "2026-08-27",
     title: "La visita empieza antes de la visita",
     summary: "Un recorrido 3D no reemplaza la experiencia presencial: ayuda a que esa visita llegue con mejor contexto.",
     image: "/manus-storage/hogar360-insight-virtual-visit_6482ce3e.jpg",
@@ -34,6 +36,7 @@ export const insightArticles: InsightArticle[] = [
   {
     slug: "que-esta-cambiando-en-otros-mercados",
     category: "MERCADOS",
+    datePublished: "2026-08-27",
     title: "Qué está cambiando en otros mercados inmobiliarios",
     summary: "Las plataformas inmobiliarias han convertido la exploración digital en una parte visible de la primera impresión de una propiedad.",
     image: "/manus-storage/hogar360-insight-global-markets_9c17a113.jpg",
@@ -51,6 +54,7 @@ export const insightArticles: InsightArticle[] = [
   {
     slug: "como-preparar-una-propiedad-para-un-recorrido-3d",
     category: "PREPARACIÓN",
+    datePublished: "2026-08-27",
     title: "Cómo preparar una propiedad para un recorrido 3D",
     summary: "Una preparación sencilla ayuda a que la experiencia sea más clara, ordenada y representativa de la propiedad.",
     image: "/manus-storage/hogar360-insight-preparation_63dd8cee.jpg",

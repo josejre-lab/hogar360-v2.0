@@ -10,14 +10,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
-
-const yourWhatsApp = "+1 (849) 863‑1101";
+import Seo from "@/components/Seo";
+import { trackEvent } from "@/lib/analytics";
+import { contactStructuredData } from "@/lib/seo";
+import { whatsappLink } from "@/lib/site";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ nombre: "", email: "", propiedad: "" });
 
-  const openWhatsApp = (message: string) => {
-    window.open(`https://wa.me/${yourWhatsApp.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`, "_blank");
+  const openWhatsApp = (message: string, placement: string) => {
+    trackEvent("whatsapp_quote_click", { placement });
+    window.open(whatsappLink(message), "_blank");
   };
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -26,12 +29,14 @@ export default function ContactPage() {
       toast.error("Por favor completa los tres campos.");
       return;
     }
-    openWhatsApp(`Hola, me interesa en los servicios de Hogar360.\n\nNombre: ${formData.nombre}\nCorreo: ${formData.email}\nPropiedad: ${formData.propiedad}`);
+    trackEvent("contact_form_submit", { placement: "contact_page_form" });
+    openWhatsApp(`Hola, me interesa en los servicios de Hogar360.\n\nNombre: ${formData.nombre}\nCorreo: ${formData.email}\nPropiedad: ${formData.propiedad}`, "contact_page_form");
     toast.success("Abriendo WhatsApp...");
   };
 
   return (
     <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+      <Seo title="Cotiza un recorrido 3D para tu propiedad | Hogar360" description="Solicita una propuesta para un recorrido 3D y landing personalizada de tu propiedad en Santiago, República Dominicana." path="/contacto" structuredData={contactStructuredData} />
       <SiteHeader active="contacto" />
       <main>
         <section className="container grid gap-12 py-20 lg:grid-cols-[0.78fr_1.22fr] lg:py-28">
@@ -39,7 +44,7 @@ export default function ContactPage() {
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#008f86]">Cotiza tu próxima propiedad</p>
             <h1 className="mt-5 max-w-xl text-5xl font-semibold leading-[0.96] tracking-[-0.055em] sm:text-6xl">Una mejor presentación empieza con una conversación.</h1>
             <p className="mt-7 max-w-md text-base leading-relaxed text-[#1b2423]/60">Cuéntanos qué propiedad quieres presentar. Te responderemos directamente por WhatsApp con una propuesta clara y adecuada para tu caso.</p>
-            <button onClick={() => openWhatsApp("Hola, quiero cotizar una experiencia Hogar360 para una propiedad.")} className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-[#008f86] transition-colors hover:text-[#006e68]">
+            <button onClick={() => openWhatsApp("Hola, quiero cotizar una experiencia Hogar360 para una propiedad.", "contact_page_text_link")} className="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-[#008f86] transition-colors hover:text-[#006e68]">
               <MessageCircle className="h-4 w-4" /> Cotizar por WhatsApp
             </button>
           </div>

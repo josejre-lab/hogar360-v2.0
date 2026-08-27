@@ -7,10 +7,13 @@ import { Link } from "wouter";
 import { insightArticles } from "@/lib/insights";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import Seo from "@/components/Seo";
+import { insightsStructuredData } from "@/lib/seo";
 
 export default function InsightsPage() {
   return (
     <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+      <Seo title="Insights sobre recorridos 3D y real estate | Hogar360" description="Guías para agentes inmobiliarios sobre recorridos 3D, presentación de propiedades y experiencias inmobiliarias digitales." path="/insights" structuredData={insightsStructuredData(insightArticles)} />
       <SiteHeader active="insights" />
       <main>
         <section className="border-b border-[#1b2423]/10 bg-[#101b27] text-white"><div className="container py-20 sm:py-28"><p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8ce3d6]">Hogar360 · Insights</p><h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.065em] sm:text-6xl lg:text-8xl">Ideas para presentar propiedades con más claridad.</h1><p className="mt-7 max-w-2xl text-base leading-relaxed text-white/60">Guías sencillas sobre recorridos 3D, experiencias inmobiliarias y los cambios que ya se ven en otros mercados.</p></div></section>
