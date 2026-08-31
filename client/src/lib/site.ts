@@ -14,8 +14,8 @@ export const siteConfig = {
   description: "Recorridos 3D profesionales y landing pages inmobiliarias para agentes y proyectos en Santiago, República Dominicana.",
   locale: "es_DO",
   language: "es-DO",
-  telephone: "+1 (849) 863-1101",
-  whatsappNumber: "18498631101",
+  telephone: "+1 (809) 642-6108",
+  whatsappNumber: "18096426108",
   serviceArea: "Santiago de los Caballeros y zonas cercanas, República Dominicana",
   defaultImage: "/manus-storage/hogar360-minimal-architectural-bg_5212f6e5.jpg",
 } as const;

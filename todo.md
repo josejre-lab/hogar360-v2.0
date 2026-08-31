@@ -7,7 +7,7 @@
 - [x] Update the property and business page hero/background treatment to use the new visual direction.
 - [x] Add a clear CTA from the case study back to Hogar360 services/contact.
 - [x] Verify responsive rendering, links, video, gallery, and no nested-anchor warnings.
-- [ ] Save and publish the completed redesign checkpoint.
+- [x] Save and publish the completed redesign checkpoint.
 
 ## Assumptions to confirm if needed
 
@@ -27,8 +27,8 @@ The Vista Linda page is a promotional case study for pitching real-estate agents
 
 ## Status
 
-- [ ] Implementation pending background asset preparation.
-- [ ] User requested a professional replacement for the existing house-photo background.
+- [x] Implementation pending background asset preparation.
+- [x] User requested a professional replacement for the existing house-photo background.
 - [ ] Previous published checkpoint: `f0f81005`.
 
 ## Niero Template Adaptation
@@ -59,3 +59,17 @@ The Vista Linda page is a promotional case study for pitching real-estate agents
 - [x] Add Organization, LocalBusiness/ProfessionalService, Service, WebSite, and Article structured data where accurate.
 - [x] Track high-intent conversion events: WhatsApp quotes, contact-form submissions, case-study views, and launch-offer clicks.
 - [x] Validate indexing and structured-data outputs and prepare Google Search Console and Analytics configuration steps.
+
+## Uploaded Code Update
+
+- [x] Inspect the user-provided updated ZIP and compare its structure with the stable Hogar360 project.
+- [x] Assess compatibility before importing or applying changes.
+- [x] Apply the user’s requested website changes without blindly overwriting stable source.
+- [x] Test and visually verify the updated routes before publishing.
+
+## Matterport and Contact Update
+
+- [x] Embed the provided Matterport Vista Linda tour at `ZoTw6nMgKbF`.
+- [x] Replace all WhatsApp contact links with +1 (809) 642-6108.
+- [x] Update the SEO structured data and visible contact references to the new number.
+- [x] Verify the tour, contact links, and SEO output before publishing.

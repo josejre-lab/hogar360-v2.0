@@ -3,7 +3,7 @@
   Warm off-white surfaces, charcoal type, restrained teal accents,
   generous whitespace, thin rules, and calm architectural imagery.
 */
-import { ArrowUpRight, ChevronRight, MessageCircle, Play, ScanLine, X } from "lucide-react";
+import { ArrowUpRight, ChevronRight, MessageCircle, ScanLine, X } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import SiteFooter from "@/components/SiteFooter";
@@ -99,11 +99,15 @@ export default function PropertyPage() {
           </div>
 
           <div className="mt-12 overflow-hidden border border-[#1b2423]/12 bg-[#101b27] shadow-[0_24px_80px_rgba(27,36,35,0.12)]">
-            <div className="flex min-h-[320px] flex-col items-center justify-center px-6 py-16 text-center text-white sm:min-h-[440px]">
-              <span className="mb-5 grid h-14 w-14 place-items-center rounded-full border border-white/25 text-[#8ce3d6]"><Play className="ml-1 h-5 w-5" /></span>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8ce3d6]">Recorrido 3D en preparación</p>
-              <h3 className="mt-4 max-w-md text-3xl font-semibold tracking-tight">El tour 3D de Vista Linda estará disponible aquí.</h3>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/60">Este módulo se integrará con el recorrido final para que el visitante pueda explorar la propiedad desde cualquier dispositivo.</p>
+            <div className="aspect-video min-h-[320px] w-full sm:min-h-[440px]">
+              <iframe
+                title="Recorrido 3D de Vista Linda"
+                src="https://my.matterport.com/show/?m=ZoTw6nMgKbF"
+                className="h-full w-full border-0"
+                frameBorder="0"
+                allowFullScreen
+                allow="autoplay; fullscreen; web-share; xr-spatial-tracking"
+              />
             </div>
           </div>
         </section>
