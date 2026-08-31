@@ -29,7 +29,7 @@ The Vista Linda page is a promotional case study for pitching real-estate agents
 
 - [x] Implementation pending background asset preparation.
 - [x] User requested a professional replacement for the existing house-photo background.
-- [ ] Previous published checkpoint: `f0f81005`.
+- [x] Previous published checkpoint: `f0f81005` (superseded by the current published update).
 
 ## Niero Template Adaptation
 
