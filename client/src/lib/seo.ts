@@ -1,6 +1,6 @@
 /*
-  Hogar360 SEO models: structured data describes the real service, its local coverage, and published educational content.
-  The data deliberately avoids fabricated ratings, physical addresses, hours, guarantees, or client claims.
+Hogar360 SEO models: structured data describes the real service, its local coverage, and published educational content.
+The data deliberately avoids fabricated ratings, physical addresses, hours, guarantees, or client claims.
 */
 import { absoluteUrl, siteConfig, SITE_URL } from "@/lib/site";
 import type { InsightArticle } from "@/lib/insights";
@@ -72,7 +72,7 @@ export const caseStudyStructuredData = {
       inLanguage: siteConfig.language,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: serviceSchema,
-      primaryImageOfPage: absoluteUrl("/manus-storage/vista-linda-hero_e01d4f82.png"),
+      primaryImageOfPage: absoluteUrl("/images/property/vista-linda-hero.jpg"),
     },
     { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "Casos", item: absoluteUrl("/casos/vista-linda") }, { "@type": "ListItem", position: 3, name: "Vista Linda", item: absoluteUrl("/casos/vista-linda") }] },
   ],

@@ -1,6 +1,6 @@
 /*
-  Hogar360 Insights editorial data: practical, agent-facing education with source-aware claims.
-  Every research-based statement is deliberately qualified so the content never promises sales outcomes.
+Hogar360 Insights editorial data: practical, agent-facing education with source-aware claims.
+Every research-based statement is deliberately qualified so the content never promises sales outcomes.
 */
 export type InsightArticle = {
   slug: string;
@@ -21,7 +21,7 @@ export const insightArticles: InsightArticle[] = [
     datePublished: "2026-08-27",
     title: "La visita empieza antes de la visita",
     summary: "Un recorrido 3D no reemplaza la experiencia presencial: ayuda a que esa visita llegue con mejor contexto.",
-    image: "/manus-storage/hogar360-insight-virtual-visit_6482ce3e.jpg",
+    image: "/images/blog/insight-virtual-visit.jpg",
     introduction: "Antes de coordinar una visita, la mayoría de las preguntas son espaciales: cómo se conectan los ambientes, qué tan cerca está una habitación de otra o si la distribución tiene sentido para la vida diaria. Un recorrido 3D le da al interesado una manera más clara de empezar esa conversación.",
     sections: [
       { heading: "No es una sustitución", paragraphs: ["Una buena visita presencial sigue siendo importante. La función del recorrido no es cerrar la decisión desde una pantalla, sino permitir que la persona llegue con expectativas más realistas y preguntas más útiles.", "La National Association of REALTORS® explica que las experiencias virtuales dan contexto sobre cómo se conectan las habitaciones y permiten evaluar la distribución antes de agendar una visita. Esa es una expectativa razonable y útil para un agente: facilitar la exploración inicial."] },
@@ -39,7 +39,7 @@ export const insightArticles: InsightArticle[] = [
     datePublished: "2026-08-27",
     title: "Qué está cambiando en otros mercados inmobiliarios",
     summary: "Las plataformas inmobiliarias han convertido la exploración digital en una parte visible de la primera impresión de una propiedad.",
-    image: "/manus-storage/hogar360-insight-global-markets_9c17a113.jpg",
+    image: "/images/blog/insight-global-markets.jpg",
     introduction: "En mercados donde la búsqueda de vivienda ocurre principalmente desde una pantalla, los recursos visuales ya no se limitan a una secuencia de fotos. Los tours 3D y los planos interactivos se usan para dar una sensación más clara de distribución, escala y recorrido antes de hablar con un agente.",
     sections: [
       { heading: "Una señal que vale la pena observar", paragraphs: ["Zillow, una plataforma inmobiliaria de Estados Unidos, integra tours 3D y planos interactivos dentro de sus listados. En sus propios datos de los 50 mercados metropolitanos con mayor volumen, los anuncios con plano interactivo obtuvieron más visualizaciones, guardados y compartidos que los anuncios sin ese recurso.", "Es importante no trasladar esos porcentajes directamente a Santiago: son datos de una plataforma específica, un país específico y un periodo concreto. Lo relevante para nuestro mercado es la dirección del comportamiento: cuando una propiedad se puede explorar con mejor contexto, el contenido deja de ser solo una imagen estática."] },
@@ -57,7 +57,7 @@ export const insightArticles: InsightArticle[] = [
     datePublished: "2026-08-27",
     title: "Cómo preparar una propiedad para un recorrido 3D",
     summary: "Una preparación sencilla ayuda a que la experiencia sea más clara, ordenada y representativa de la propiedad.",
-    image: "/manus-storage/hogar360-insight-preparation_63dd8cee.jpg",
+    image: "/images/blog/insight-preparation.jpg",
     introduction: "La captura es una parte del trabajo. La otra parte es preparar el espacio para que el recorrido muestre una versión ordenada, fiel y fácil de entender de la propiedad. No se trata de aparentar algo que no existe; se trata de reducir distracciones.",
     sections: [
       { heading: "Antes de la captura", paragraphs: ["Recorre cada espacio como lo haría un visitante. Guarda artículos personales, despeja superficies y retira objetos que bloqueen pasos o puertas. Revisa que las luces principales funcionen y deja accesibles las áreas que quieres incluir.", "Si hay inquilinos, mascotas o tiempos de acceso limitados, coordina esos detalles con anticipación. La investigación académica sobre marketing virtual destaca que estas herramientas pueden ser especialmente útiles cuando una propiedad es más difícil de mostrar; una buena coordinación hace que ese beneficio sea más aprovechable."] },

@@ -1,6 +1,6 @@
 /*
-  Hogar360 site configuration: the single source of truth for its public URL and contact details.
-  When a custom domain or professional phone number is ready, change it here and regenerate sitemap.xml.
+Hogar360 site configuration: the single source of truth for its public URL and contact details.
+When a custom domain or professional phone number is ready, change it here and regenerate sitemap.xml.
 */
 export const SITE_URL = "https://hogar3d-kvab2cnh.manus.space";
 
@@ -17,7 +17,7 @@ export const siteConfig = {
   telephone: "+1 (809) 642-6108",
   whatsappNumber: "18096426108",
   serviceArea: "Santiago de los Caballeros y zonas cercanas, República Dominicana",
-  defaultImage: "/manus-storage/hogar360-minimal-architectural-bg_5212f6e5.jpg",
+  defaultImage: "/images/brand/architectural-background.jpg",
 } as const;
 
 export const absoluteUrl = (path = "/") => {
