@@ -73,3 +73,10 @@ The Vista Linda page is a promotional case study for pitching real-estate agents
 - [x] Replace all WhatsApp contact links with +1 (809) 642-6108.
 - [x] Update the SEO structured data and visible contact references to the new number.
 - [x] Verify the tour, contact links, and SEO output before publishing.
+
+## Media Recovery
+
+- [x] Inventory the original background, property photos, blog images, video, and hosted asset references.
+- [x] Recover and verify all available original media assets and formats.
+- [x] Create a portable media bundle with an asset-reference manifest for the external host.
+- [x] Document which Forge API capabilities require plan confirmation from Manus Support.
