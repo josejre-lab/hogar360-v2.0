@@ -35,7 +35,7 @@ export const homeStructuredData = {
       name: siteConfig.name,
       legalName: siteConfig.legalName,
       url: SITE_URL,
-      logo: absoluteUrl("/favicon.svg"),
+      logo: absoluteUrl("/images/brand/logo.png"),
       image: absoluteUrl(siteConfig.defaultImage),
       description: siteConfig.description,
       telephone: siteConfig.telephone,
