@@ -1,6 +1,6 @@
 /*
-  Hogar360 shared chrome: compact editorial navigation with a 360-view brand mark.
-  The component preserves the premium real-estate media tone across all routes.
+Hogar360 shared chrome: compact editorial navigation with a 360-view brand mark.
+The component preserves the premium real-estate media tone across all routes.
 */
 import { Menu } from "lucide-react";
 import { Link } from "wouter";
@@ -16,7 +16,7 @@ const navItem = (active: boolean) =>
 
 export default function SiteHeader({ active }: SiteHeaderProps) {
   return (
-    <header className="sticky top-0 z-50 border-b border-[#1b2423]/10 bg-[#f7f6f2]/92 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-[#1b2423]/10 bg-[#fdfbf7]/92 backdrop-blur-xl">
       <div className="container flex items-center justify-between py-4 sm:py-5">
         <Link href="/" className="flex items-center gap-3 text-sm text-[#1b2423]" aria-label="Hogar360, inicio">
           <BrandMark />
