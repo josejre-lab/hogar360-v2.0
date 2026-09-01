@@ -1,6 +1,6 @@
 /*
-  Hogar360 Insights index: an editorial, Niero-inspired card grid for practical real-estate media education.
-  Deep navy, generous white space, restrained teal labels, and real source-aware content build credibility.
+Hogar360 Insights index: an editorial, Niero-inspired card grid for practical real-estate media education.
+Deep navy, generous white space, restrained teal labels, and real source-aware content build credibility.
 */
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
@@ -12,7 +12,7 @@ import { insightsStructuredData } from "@/lib/seo";
 
 export default function InsightsPage() {
   return (
-    <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+    <div className="min-h-screen bg-[#fdfbf7] text-[#1b2423]">
       <Seo title="Insights sobre recorridos 3D y real estate | Hogar360" description="Guías para agentes inmobiliarios sobre recorridos 3D, presentación de propiedades y experiencias inmobiliarias digitales." path="/insights" structuredData={insightsStructuredData(insightArticles)} />
       <SiteHeader active="insights" />
       <main>

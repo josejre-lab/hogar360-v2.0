@@ -1,6 +1,6 @@
 /*
-  Hogar360 contact route: minimalist agent-facing inquiry page.
-  Conversion is deliberately short and routes qualified inquiries directly to WhatsApp.
+Hogar360 contact route: minimalist agent-facing inquiry page.
+Conversion is deliberately short and routes qualified inquiries directly to WhatsApp.
 */
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import { useState } from "react";
@@ -35,7 +35,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+    <div className="min-h-screen bg-[#fdfbf7] text-[#1b2423]">
       <Seo title="Cotiza un recorrido 3D para tu propiedad | Hogar360" description="Solicita una propuesta para un recorrido 3D y landing personalizada de tu propiedad en Santiago, República Dominicana." path="/contacto" structuredData={contactStructuredData} />
       <SiteHeader active="contacto" />
       <main>

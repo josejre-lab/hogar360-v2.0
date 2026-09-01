@@ -1,7 +1,7 @@
 /*
-  Hogar360 visual direction: minimalist editorial case study.
-  Warm off-white surfaces, charcoal type, restrained teal accents,
-  generous whitespace, thin rules, and calm architectural imagery.
+Hogar360 visual direction: minimalist editorial case study.
+Warm off-white surfaces, charcoal type, restrained teal accents,
+generous whitespace, thin rules, and calm architectural imagery.
 */
 import { ArrowUpRight, ChevronRight, MessageCircle, ScanLine, X } from "lucide-react";
 import { Link } from "wouter";
@@ -12,14 +12,17 @@ import Seo from "@/components/Seo";
 import { trackEvent } from "@/lib/analytics";
 import { caseStudyStructuredData } from "@/lib/seo";
 
-const backgroundImage = "/manus-storage/hogar360-minimal-architectural-bg_5212f6e5.jpg";
+const backgroundImage = "/images/brand/architectural-background.jpg";
 
 const galleryPhotos = [
-  { src: "/manus-storage/vista-linda-hero_e01d4f82.png", title: "Fachada principal" },
+  { src: "/images/property/vista-linda-hero.jpg", title: "Fachada principal" },
   { src: "https://framerusercontent.com/images/wkTprlsrdB62blXtpLFmyJcM3vQ.jpeg", title: "Vista frontal" },
   { src: "https://framerusercontent.com/images/aojY4A8XMSYIrUdu8XbsXJspTw.jpeg", title: "Vista exterior" },
   { src: "https://framerusercontent.com/images/Gvg7GhWAVR5QLMouuNf9o8Mw.jpeg", title: "Acceso principal" },
   { src: "https://framerusercontent.com/images/eQWAYO7xnwJODSGeN4rGiflQLY.jpeg", title: "Detalle arquitectónico" },
+  { src: "/images/property/vista-linda-front-alt.jpg", title: "Otra vista frontal" },
+  { src: "/images/property/vista-linda-corner.jpg", title: "Esquina exterior" },
+  { src: "/images/property/vista-linda-entrance.jpg", title: "Entrada" },
 ];
 
 const propertyFacts = [
@@ -32,8 +35,8 @@ export default function PropertyPage() {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
-      <Seo title="Vista Linda: caso de estudio de recorrido 3D | Hogar360" description="Descubre cómo Hogar360 reúne recorrido 3D, galería e información de una propiedad en una experiencia clara para agentes inmobiliarios." path="/casos/vista-linda" image="/manus-storage/vista-linda-hero_e01d4f82.png" structuredData={caseStudyStructuredData} />
+    <div className="min-h-screen bg-[#fdfbf7] text-[#1b2423]">
+      <Seo title="Vista Linda: caso de estudio de recorrido 3D | Hogar360" description="Descubre cómo Hogar360 reúne recorrido 3D, galería e información de una propiedad en una experiencia clara para agentes inmobiliarios." path="/casos/vista-linda" image="/images/property/vista-linda-hero.jpg" structuredData={caseStudyStructuredData} />
       <SiteHeader active="casos" />
 
       <main>
@@ -42,7 +45,7 @@ export default function PropertyPage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url('${backgroundImage}')` }}
           />
-          <div className="absolute inset-0 bg-[#f7f6f2]/78" />
+          <div className="absolute inset-0 bg-[#fdfbf7]/78" />
           <div className="spatial-orbit absolute -right-8 top-28 h-56 w-56 opacity-65 before:-left-16 before:-top-12 after:left-7 after:top-0 lg:right-[18%]" />
           <div className="relative container grid min-h-[570px] items-end gap-12 py-20 lg:grid-cols-[1.05fr_0.55fr] lg:items-center lg:py-24">
             <div className="max-w-3xl">
@@ -119,7 +122,7 @@ export default function PropertyPage() {
               <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.04em]">Una primera visita, en movimiento.</h2>
             </div>
             <div className="overflow-hidden bg-[#101b27] shadow-[0_20px_60px_rgba(27,36,35,0.14)]">
-              <video src="/manus-storage/videotour-ai_bd4ebbdd.mp4" controls playsInline preload="metadata" className="aspect-video w-full object-contain" />
+              <video src="/videos/vista-linda-tour.mp4" controls playsInline preload="metadata" className="aspect-video w-full object-contain" />
             </div>
           </div>
         </section>
@@ -142,7 +145,7 @@ export default function PropertyPage() {
                 className={`group relative overflow-hidden bg-[#d9d7cf] text-left focus:outline-none focus:ring-2 focus:ring-[#008f86] focus:ring-offset-2 ${idx === 0 ? "col-span-2 row-span-2 min-h-[330px] md:min-h-[520px]" : "aspect-square"}`}
               >
                 <img src={photo.src} alt={photo.title} loading="eager" className="h-full w-full object-cover saturate-[0.86] sepia-[0.06] transition duration-500 group-hover:scale-105 group-hover:saturate-100" />
-                <span className="absolute left-3 top-3 rounded-full bg-[#f7f6f2]/92 px-2.5 py-1 opacity-0 backdrop-blur transition-opacity group-hover:opacity-100"><span className="capture-label">Vista 360</span></span>
+                <span className="absolute left-3 top-3 rounded-full bg-[#fdfbf7]/92 px-2.5 py-1 opacity-0 backdrop-blur transition-opacity group-hover:opacity-100"><span className="capture-label">Vista 360</span></span>
                 <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-4 pt-12 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100">{photo.title}</span>
               </button>
             ))}

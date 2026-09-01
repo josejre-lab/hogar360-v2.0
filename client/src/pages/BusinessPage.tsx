@@ -1,7 +1,7 @@
 /*
-  Hogar360 visual direction: premium real-estate media, inspired by Niero's editorial hierarchy.
-  The page sells the outcome for agents: clearer property presentation and informed visits.
-  Warm off-white surfaces, deep navy anchors, selective teal, restrained motion, and no generic SaaS language.
+Hogar360 visual direction: premium real-estate media, inspired by Niero's editorial hierarchy.
+The page sells the outcome for agents: clearer property presentation and informed visits.
+Warm off-white surfaces, deep navy anchors, selective teal, restrained motion, and no generic SaaS language.
 */
 import { ArrowRight, ArrowUpRight, Check, MessageCircle, ScanLine } from "lucide-react";
 import { Link } from "wouter";
@@ -17,7 +17,7 @@ import { trackEvent } from "@/lib/analytics";
 import { homeStructuredData } from "@/lib/seo";
 import { whatsappLink } from "@/lib/site";
 
-const backgroundImage = "/manus-storage/hogar360-minimal-architectural-bg_5212f6e5.jpg";
+const backgroundImage = "/images/brand/architectural-background.jpg";
 
 const portfolio = [
   { title: "Presentación exterior", image: "https://framerusercontent.com/images/aojY4A8XMSYIrUdu8XbsXJspTw.jpeg", detail: "Primera impresión" },
@@ -66,14 +66,14 @@ export default function BusinessPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f6f2] text-[#1b2423]">
+    <div className="min-h-screen bg-[#fdfbf7] text-[#1b2423]">
       <Seo title="Recorridos 3D para propiedades en Santiago | Hogar360" description="Recorridos 3D profesionales y landing pages inmobiliarias para agentes y proyectos en Santiago, República Dominicana." path="/" structuredData={homeStructuredData} />
       <SiteHeader active="inicio" />
 
       <main>
         <section className="relative overflow-hidden border-b border-[#1b2423]/10">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${backgroundImage}')` }} />
-          <div className="absolute inset-0 bg-[#f7f6f2]/79" />
+          <div className="absolute inset-0 bg-[#fdfbf7]/79" />
           <div className="spatial-orbit absolute -right-10 top-28 h-64 w-64 opacity-70 before:-left-16 before:-top-12 after:left-7 after:top-0 lg:right-[18%]" />
           <div className="relative container grid min-h-[690px] items-end gap-12 py-20 lg:grid-cols-[1.15fr_0.46fr] lg:items-center lg:py-24">
             <div className="max-w-5xl">
@@ -118,7 +118,7 @@ export default function BusinessPage() {
             {portfolio.map((card) => (
               <Link onClick={() => trackEvent("case_study_click", { placement: "portfolio_card" })} key={card.title} href="/casos/vista-linda" className="group block">
                 <article className="overflow-hidden border border-[#1b2423]/12 bg-white/45 transition duration-300 group-hover:-translate-y-1 group-hover:border-[#008f86]/55">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#d9d7cf]"><img src={card.image} alt={card.title} loading="lazy" className="h-full w-full object-cover saturate-[0.88] sepia-[0.06] transition duration-500 group-hover:scale-105 group-hover:saturate-100" /><div className="absolute left-4 top-4 rounded-full bg-[#f7f6f2]/90 px-2.5 py-1 backdrop-blur"><span className="capture-label">Vista 360</span></div><span className="absolute bottom-3 right-4 text-[10px] font-bold tracking-[0.16em] text-white drop-shadow-md">0{portfolio.indexOf(card) + 1}</span></div>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[#d9d7cf]"><img src={card.image} alt={card.title} loading="lazy" className="h-full w-full object-cover saturate-[0.88] sepia-[0.06] transition duration-500 group-hover:scale-105 group-hover:saturate-100" /><div className="absolute left-4 top-4 rounded-full bg-[#fdfbf7]/90 px-2.5 py-1 backdrop-blur"><span className="capture-label">Vista 360</span></div><span className="absolute bottom-3 right-4 text-[10px] font-bold tracking-[0.16em] text-white drop-shadow-md">0{portfolio.indexOf(card) + 1}</span></div>
                   <div className="flex items-end justify-between gap-4 px-5 py-5"><div><p className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#008f86]">Caso Vista Linda</p><h3 className="mt-2 font-semibold tracking-tight">{card.title}</h3><p className="mt-1 text-sm text-[#1b2423]/52">{card.detail}</p></div><ArrowUpRight className="mb-1 h-4 w-4 text-[#1b2423]/45 transition-colors group-hover:text-[#008f86]" /></div>
                 </article>
               </Link>
@@ -147,7 +147,7 @@ export default function BusinessPage() {
             </div>
 
             <div className="mt-12 grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-              <article className="relative overflow-hidden border-2 border-[#008f86] bg-[#f7f6f2] p-8 shadow-[0_22px_70px_rgba(27,36,35,0.09)] sm:p-10"><div className="spatial-orbit pointer-events-none absolute -bottom-20 -right-14 h-48 w-48 opacity-35 before:-left-10 before:-top-12 after:left-10 after:top-0" />
+              <article className="relative overflow-hidden border-2 border-[#008f86] bg-[#fdfbf7] p-8 shadow-[0_22px_70px_rgba(27,36,35,0.09)] sm:p-10"><div className="spatial-orbit pointer-events-none absolute -bottom-20 -right-14 h-48 w-48 opacity-35 before:-left-10 before:-top-12 after:left-10 after:top-0" />
                 <div className="absolute right-0 top-0 bg-[#008f86] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-white">Precio especial de lanzamiento</div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#008f86]">Paquete Lanzamiento</p>
                 <h3 className="mt-5 text-4xl font-semibold tracking-[-0.05em]">3D + Landing</h3>
@@ -162,7 +162,7 @@ export default function BusinessPage() {
               </article>
 
               <article className="relative border border-[#1b2423]/12 bg-white/40 p-8 opacity-65 sm:p-10">
-                <div className="absolute right-6 top-6 rounded-full border border-[#1b2423]/15 bg-[#f7f6f2] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#1b2423]/60">Próximamente</div>
+                <div className="absolute right-6 top-6 rounded-full border border-[#1b2423]/15 bg-[#fdfbf7] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#1b2423]/60">Próximamente</div>
                 <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1b2423]/45">Expansión de servicio</p>
                 <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em]">Add-on Dron</h3>
                 <p className="mt-2 text-sm text-[#1b2423]/50">Fotos aéreas y video vertical</p>
@@ -173,8 +173,8 @@ export default function BusinessPage() {
           </div>
         </section>
 
-        <section className="border-y border-[#1b2423]/10 bg-[#f7f6f2]">
-          <div className="container py-20 lg:py-28"><div className="flex flex-col justify-between gap-6 border-b border-[#1b2423]/15 pb-8 sm:flex-row sm:items-end"><div><p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#008f86]">04 · Insights</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Pensar mejor cómo se presenta una propiedad.</h2></div><Link href="/insights" className="inline-flex items-center gap-2 text-sm font-semibold text-[#008f86] transition-colors hover:text-[#006e68]">Ver todos los artículos <ArrowRight className="h-4 w-4" /></Link></div><div className="mt-10 grid gap-5 md:grid-cols-3">{[{ title: "La visita empieza antes de la visita", category: "Guía", image: "/manus-storage/hogar360-insight-virtual-visit_6482ce3e.jpg", slug: "la-visita-empieza-antes-de-la-visita" }, { title: "Qué está cambiando en otros mercados inmobiliarios", category: "Mercados", image: "/manus-storage/hogar360-insight-global-markets_9c17a113.jpg", slug: "que-esta-cambiando-en-otros-mercados" }, { title: "Cómo preparar una propiedad para un recorrido 3D", category: "Preparación", image: "/manus-storage/hogar360-insight-preparation_63dd8cee.jpg", slug: "como-preparar-una-propiedad-para-un-recorrido-3d" }].map((article, index) => <Link key={article.slug} href={`/insights/${article.slug}`} className="group block"><article><div className="relative aspect-[1.45/1] overflow-hidden bg-[#d9d7cf]"><img src={article.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /><span className="absolute bottom-3 right-3 grid h-7 w-7 place-items-center rounded-full border border-white/70 bg-[#101b27]/65 text-[10px] font-bold text-white backdrop-blur">0{index + 1}</span></div><p className="mt-4 text-[10px] font-bold uppercase tracking-[0.17em] text-[#008f86]">{article.category}</p><h3 className="mt-3 text-xl font-semibold leading-tight tracking-[-0.035em] group-hover:text-[#008f86]">{article.title}</h3></article></Link>)}</div></div>
+        <section className="border-y border-[#1b2423]/10 bg-[#fdfbf7]">
+          <div className="container py-20 lg:py-28"><div className="flex flex-col justify-between gap-6 border-b border-[#1b2423]/15 pb-8 sm:flex-row sm:items-end"><div><p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#008f86]">04 · Insights</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">Pensar mejor cómo se presenta una propiedad.</h2></div><Link href="/insights" className="inline-flex items-center gap-2 text-sm font-semibold text-[#008f86] transition-colors hover:text-[#006e68]">Ver todos los artículos <ArrowRight className="h-4 w-4" /></Link></div><div className="mt-10 grid gap-5 md:grid-cols-3">{[{ title: "La visita empieza antes de la visita", category: "Guía", image: "/images/blog/insight-virtual-visit.jpg", slug: "la-visita-empieza-antes-de-la-visita" }, { title: "Qué está cambiando en otros mercados inmobiliarios", category: "Mercados", image: "/images/blog/insight-global-markets.jpg", slug: "que-esta-cambiando-en-otros-mercados" }, { title: "Cómo preparar una propiedad para un recorrido 3D", category: "Preparación", image: "/images/blog/insight-preparation.jpg", slug: "como-preparar-una-propiedad-para-un-recorrido-3d" }].map((article, index) => <Link key={article.slug} href={`/insights/${article.slug}`} className="group block"><article><div className="relative aspect-[1.45/1] overflow-hidden bg-[#d9d7cf]"><img src={article.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /><span className="absolute bottom-3 right-3 grid h-7 w-7 place-items-center rounded-full border border-white/70 bg-[#101b27]/65 text-[10px] font-bold text-white backdrop-blur">0{index + 1}</span></div><p className="mt-4 text-[10px] font-bold uppercase tracking-[0.17em] text-[#008f86]">{article.category}</p><h3 className="mt-3 text-xl font-semibold leading-tight tracking-[-0.035em] group-hover:text-[#008f86]">{article.title}</h3></article></Link>)}</div></div>
         </section>
 
         <section id="contacto" className="container py-20 lg:py-28">
