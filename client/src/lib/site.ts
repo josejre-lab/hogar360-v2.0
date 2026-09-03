@@ -2,7 +2,7 @@
 Hogar360 site configuration: the single source of truth for its public URL and contact details.
 When a custom domain or professional phone number is ready, change it here and regenerate sitemap.xml.
 */
-export const SITE_URL = "https://hogar3d-kvab2cnh.manus.space";
+export const SITE_URL = "https://hogar360rd.com";
 
 // Paste a public Google Analytics 4 Measurement ID here after creating a GA4 web data stream, e.g. "G-ABC123DE45".
 // Leave blank to keep the optional Google Analytics loader inactive. Built-in page analytics continue to run independently.
