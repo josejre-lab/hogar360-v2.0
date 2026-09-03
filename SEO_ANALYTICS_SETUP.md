@@ -24,4 +24,4 @@ Do not add contact form values, names, phone numbers, or email addresses to anal
 
 ## Critical Update When a Custom Domain Is Connected
 
-The public URL is currently `https://hogar3d-kvab2cnh.manus.space`. As soon as a custom domain is live, replace that value in `client/src/lib/site.ts`, `client/index.html`, `client/public/robots.txt`, and `client/public/sitemap.xml`, then publish and submit the new sitemap in Search Console.
+The public URL is `https://hogar360rd.com` (updated from the original Manus preview URL, `https://hogar3d-kvab2cnh.manus.space`, once the custom domain went live). The canonical value lives in `client/src/lib/site.ts`; it is also mirrored statically in `client/index.html`, `client/public/robots.txt`, and `client/public/sitemap.xml` for share-preview scrapers and crawlers that don't execute JS. If the domain ever changes again, update all four and resubmit the sitemap in Search Console.
