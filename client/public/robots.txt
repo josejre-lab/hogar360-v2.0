@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hogar3d-kvab2cnh.manus.space/sitemap.xml
+Sitemap: https://hogar360rd.com/sitemap.xml
