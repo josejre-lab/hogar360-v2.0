@@ -105,7 +105,7 @@ export default function PropertyPage() {
             <div className="aspect-video min-h-[320px] w-full sm:min-h-[440px]">
               <iframe
                 title="Recorrido 3D de Vista Linda"
-                src="https://my.matterport.com/show/?m=ZoTw6nMgKbF"
+                src="https://my.matterport.com/show/?m=ZgZLTpzSFmF"
                 className="h-full w-full border-0"
                 frameBorder="0"
                 allowFullScreen
