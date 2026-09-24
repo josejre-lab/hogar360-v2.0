@@ -83,7 +83,7 @@ export default function BusinessPage() {
               <p className="mt-5 text-sm font-medium text-[#1b2423]/55">Para agentes inmobiliarios y proyectos en Santiago y alrededores.</p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a onClick={() => trackEvent("hero_how_it_works_click", { placement: "homepage_hero" })} href="#como-funciona" className="inline-flex items-center gap-2 rounded-full bg-[#1b2423] px-6 py-3.5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#008f86] active:scale-[0.97]">Ver cómo funciona <ArrowRight className="h-4 w-4" /></a>
-                <Link onClick={() => trackEvent("case_study_click", { placement: "homepage_hero" })} href="/casos/vista-linda" className="inline-flex items-center gap-2 px-2 py-3.5 text-sm font-semibold text-[#1b2423]/75 transition-colors hover:text-[#008f86]">Ver propiedad en 3D <ArrowUpRight className="h-4 w-4" /></Link>
+                <a onClick={() => trackEvent("case_study_click", { placement: "homepage_hero" })} href="https://my.matterport.com/show/?m=aEbrCb8PmZT" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-2 py-3.5 text-sm font-semibold text-[#1b2423]/75 transition-colors hover:text-[#008f86]">Ver propiedad en 3D <ArrowUpRight className="h-4 w-4" /></a>
               </div>
             </div>
             <div className="max-w-[270px] justify-self-start border-l border-[#1b2423]/20 pl-6 lg:justify-self-end">
