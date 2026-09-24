@@ -25,7 +25,7 @@ const PORTFOLIO_ITEMS = [
   {
     label: "Altos de Gurabo",
     description: "Apartamento modelo · CityMax Santiago",
-    href: "https://my.matterport.com/show/?m=ZgZLTpzSFmF",
+    href: "https://my.matterport.com/show/?m=aEbrCb8PmZT",
     external: true,
   },
 ];
@@ -67,7 +67,7 @@ export default function SiteHeader({ active }: SiteHeaderProps) {
               onClick={() => setPortfolioOpen((open) => !open)}
               aria-expanded={portfolioOpen}
               aria-haspopup="menu"
-              className={`flex items-center gap-1 ${navItem(active === "casos" || portfolioOpen)}`}
+              className={`flex items-center gap-1 uppercase tracking-[0.16em] ${navItem(active === "casos" || portfolioOpen)}`}
             >
               Portafolio
               <ChevronDown className={`h-3 w-3 transition-transform ${portfolioOpen ? "rotate-180" : ""}`} />
