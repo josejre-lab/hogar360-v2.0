@@ -125,6 +125,7 @@ export default function SiteHeader({ active }: SiteHeaderProps) {
               </div>
             )}
           </div>
+          <a href="/pre-construccion-demo" className={navItem(false)}>Pre-construcción</a>
           <a href="/#servicios" className={navItem(active === "servicios")}>Servicios</a>
           <Link href="/insights" className={navItem(active === "insights")}>Insights</Link>
           <Link onClick={() => trackEvent("header_quote_click", { location: "desktop_header" })} href="/contacto" className={`rounded-full border px-4 py-2 ${active === "contacto" ? "border-[#008f86] bg-[#008f86] text-white" : "border-[#1b2423]/18 text-[#1b2423] hover:border-[#008f86] hover:bg-[#008f86] hover:text-white"}`}>Cotizar</Link>
@@ -160,6 +161,7 @@ export default function SiteHeader({ active }: SiteHeaderProps) {
               </div>
             </div>
 
+            <a href="/pre-construccion-demo" onClick={closeMobile} className={mobileLink(false)}>Pre-construcción</a>
             <a href="/#servicios" onClick={closeMobile} className={mobileLink(active === "servicios")}>Servicios</a>
             <Link href="/insights" onClick={closeMobile} className={mobileLink(active === "insights")}>Insights</Link>
 
