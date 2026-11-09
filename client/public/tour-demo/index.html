@@ -16,41 +16,75 @@
   html, body { margin: 0; height: 100%; background: var(--navy); font-family: "Helvetica Neue", Arial, sans-serif; overflow: hidden; }
   #tour { position: fixed; inset: 0; }
 
-  /* Brand bar */
+  /* Hide Pannellum's default title box (the menu already shows the room) */
+  .pnlm-panorama-info { display: none !important; }
+  /* Move Pannellum's fullscreen button away from the brand badge */
+  .pnlm-controls-container { top: auto !important; left: auto !important; right: 14px; bottom: 70px; }
+
+  /* Brand badge */
   .brand {
     position: fixed; top: 14px; left: 14px; z-index: 10;
     background: var(--navy-soft); color: var(--white);
-    padding: 8px 14px; border-radius: 10px; backdrop-filter: blur(6px);
-    line-height: 1.2; pointer-events: none;
+    padding: 10px 14px 10px 12px; border-radius: 12px; backdrop-filter: blur(6px);
+    line-height: 1.25; pointer-events: none;
+    display: flex; align-items: center; gap: 11px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
   }
-  .brand b { font-size: 16px; letter-spacing: 0.5px; }
+  .brand .mark {
+    width: 34px; height: 34px; border-radius: 9px; flex: 0 0 auto;
+    background: var(--beige); color: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand .mark svg { width: 20px; height: 20px; }
+  .brand b { display: block; font-size: 14px; letter-spacing: 2.5px; font-weight: 700; }
   .brand span { display: block; font-size: 12px; color: var(--beige); }
-  .brand small { display: block; font-size: 10px; opacity: 0.7; margin-top: 2px; }
+  .brand small { display: block; font-size: 10px; opacity: 0.75; margin-top: 1px; }
+
+  /* WhatsApp button */
+  .wa {
+    position: fixed; top: 14px; right: 14px; z-index: 10;
+    display: flex; align-items: center; gap: 8px;
+    background: #1faa59; color: var(--white); text-decoration: none;
+    font-size: 13px; font-weight: 600;
+    padding: 0 14px 0 11px; height: 44px; border-radius: 999px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    transition: transform 0.15s, background 0.15s;
+  }
+  .wa:hover { transform: scale(1.05); background: #189a4f; }
+  .wa svg { width: 22px; height: 22px; flex: 0 0 auto; }
 
   /* Room menu */
   .menu {
     position: fixed; left: 0; right: 0; bottom: 14px; z-index: 10;
-    display: flex; gap: 8px; justify-content: center; padding: 0 12px;
+    display: flex; gap: 8px; padding: 0 12px;
     overflow-x: auto; scrollbar-width: none;
   }
+  .menu button:first-child { margin-left: auto; }
+  .menu button:last-child { margin-right: auto; }
   .menu::-webkit-scrollbar { display: none; }
   .menu button {
     flex: 0 0 auto; border: 1px solid rgba(255,255,255,0.35);
     background: var(--navy-soft); color: var(--white);
     padding: 9px 14px; border-radius: 999px; font-size: 13px; cursor: pointer;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px); transition: background 0.2s, color 0.2s;
   }
   .menu button.active { background: var(--beige); color: var(--navy); border-color: var(--beige); font-weight: 600; }
 
-  /* Door hotspot: circle with arrow + label */
+  /* Door hotspot: circle with arrow, pulsing halo, short label */
   .h360-door { width: 44px; height: 44px; cursor: pointer; }
   .h360-door .ring {
+    position: relative;
     width: 40px; height: 40px; border-radius: 50%;
-    border: 2px solid var(--white); background: rgba(20, 33, 61, 0.35);
+    border: 2px solid var(--white); background: rgba(20, 33, 61, 0.45);
     display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.35); transition: transform 0.15s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.35); transition: transform 0.15s, background 0.15s;
   }
-  .h360-door:hover .ring { transform: scale(1.12); background: rgba(20, 33, 61, 0.6); }
+  .h360-door .ring::after {
+    content: ""; position: absolute; inset: -2px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.85);
+    animation: halo 2.2s ease-out infinite;
+  }
+  .h360-door:hover .ring { transform: scale(1.12); background: rgba(20, 33, 61, 0.7); }
   .h360-door .ring::before {
     content: ""; width: 11px; height: 11px; margin-top: 5px;
     border-left: 2.5px solid var(--white); border-top: 2.5px solid var(--white);
@@ -59,8 +93,10 @@
   .h360-label {
     position: absolute; top: 48px; left: 50%; transform: translateX(-50%);
     white-space: nowrap; background: var(--navy-soft); color: var(--white);
-    font-size: 12px; padding: 4px 9px; border-radius: 6px; pointer-events: none;
+    font-size: 12px; font-weight: 600; padding: 4px 9px; border-radius: 6px; pointer-events: none;
   }
+  /* Label above the ring, for doors that sit close together */
+  .h360-up .h360-label { top: auto; bottom: 50px; }
 
   /* Floor hotspot: ring on the floor (living room to living room) */
   .h360-floor { width: 76px; height: 40px; cursor: pointer; }
@@ -71,11 +107,39 @@
     animation: pulse 1.8s ease-in-out infinite;
   }
   .h360-floor .h360-label { top: 42px; }
-  @keyframes pulse { 0%,100% { opacity: 0.65; } 50% { opacity: 1; } }
+  @keyframes pulse { 0%,100% { opacity: 0.65; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+  @keyframes halo { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.7); opacity: 0; } }
+
+  /* First-visit hint */
+  .hint {
+    position: fixed; left: 50%; top: 50%; z-index: 9; transform: translate(-50%, -50%);
+    background: var(--navy-soft); color: var(--white); backdrop-filter: blur(6px);
+    padding: 12px 18px; border-radius: 999px; font-size: 14px;
+    display: flex; align-items: center; gap: 10px; pointer-events: none;
+    transition: opacity 0.5s; white-space: nowrap;
+  }
+  .hint svg { width: 22px; height: 22px; animation: sway 1.6s ease-in-out infinite; }
+  .hint.gone { opacity: 0; }
+  @keyframes sway { 0%,100% { transform: translateX(-5px); } 50% { transform: translateX(5px); } }
+
+  /* Phones */
+  @media (max-width: 520px) {
+    .brand { padding: 8px 12px 8px 9px; gap: 9px; }
+    .brand small { display: none; }
+    .wa span { display: none; }
+    .wa { padding: 0; width: 44px; justify-content: center; }
+    .h360-door { width: 36px; height: 36px; }
+    .h360-door .ring { width: 32px; height: 32px; }
+    .h360-label { top: 40px; font-size: 11px; padding: 3px 7px; }
+    .h360-up .h360-label { bottom: 42px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .h360-door .ring::after, .h360-floor .ring, .hint svg { animation: none; }
+  }
 
   /* Calibration box (only with ?edit=1) */
   .coords {
-    position: fixed; top: 14px; right: 14px; z-index: 11; display: none;
+    position: fixed; top: 70px; right: 14px; z-index: 11; display: none;
     background: #000c; color: #9f9; font: 13px/1.4 monospace;
     padding: 10px 12px; border-radius: 8px; max-width: 70vw;
   }
@@ -85,9 +149,25 @@
 <div id="tour"></div>
 
 <div class="brand">
-  <b>Hogar360</b>
-  <span>Apartamento de 3 habitaciones</span>
-  <small>Tour de muestra creado desde renders</small>
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6.5 10v8.5h11V10"/><path d="M10 18.5v-4.5h4v4.5"/></svg>
+  </div>
+  <div>
+    <b>HOGAR360</b>
+    <span>Apartamento de 3 habitaciones</span>
+    <small>Tour de muestra creado desde renders</small>
+  </div>
+</div>
+
+<a class="wa" id="wa" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a Hogar360"
+   href="https://wa.me/18096426108?text=Hola%20Jos%C3%A9%2C%20vi%20el%20tour%20de%20preconstrucci%C3%B3n%20de%20Hogar360%20y%20me%20interesa%20uno%20para%20mi%20proyecto.">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.5-4.4A8.4 8.4 0 1 1 20.5 11.6z"/><path d="M9 9.5h6M9 13h3.5"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<div class="hint" id="hint">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 8 3 12l4 4"/><path d="M17 8l4 4-4 4"/><path d="M3 12h18"/></svg>
+  Arrastre para mirar alrededor
 </div>
 
 <nav class="menu" id="menu"></nav>
@@ -95,7 +175,7 @@
 
 <script>
 /*
-  FILE NAMES: put these 6 images in the same folder as this file.
+  FILE NAMES: put these 6 images in the /tour-demo/ folder.
   sala-entrada.jpg          Living room 1, near the entrance
   sala-interior.jpg         Living room 2, near the rooms
   habitacion-principal.jpg  Master bedroom
@@ -106,33 +186,33 @@
   CALIBRATION: open the page with ?edit=1 at the end of the link.
   Tap any spot and the box shows its yaw and pitch.
   Replace the numbers below to move a hotspot.
+
+  doorSpot(pitch, yaw, sceneId, label, opts)
+    opts.up        true puts the label above the ring (for doors close together)
+    opts.faceYaw   direction you face when you arrive in the next scene
 */
 
-function door(text) {
+function tip(text) {
   return function (div) {
     div.innerHTML = '<div class="ring"></div><div class="h360-label">' + text + '</div>';
   };
 }
-function floor(text) {
-  return function (div) {
-    div.innerHTML = '<div class="ring"></div><div class="h360-label">' + text + '</div>';
-  };
+function spot(css, pitch, yaw, sceneId, label, opts) {
+  opts = opts || {};
+  var h = { pitch: pitch, yaw: yaw, type: "scene", sceneId: sceneId,
+            cssClass: css + (opts.up ? " h360-up" : ""), createTooltipFunc: tip(label) };
+  if (typeof opts.faceYaw === "number") { h.targetYaw = opts.faceYaw; h.targetPitch = -3; }
+  return h;
 }
-function doorSpot(pitch, yaw, sceneId, label) {
-  return { pitch: pitch, yaw: yaw, type: "scene", sceneId: sceneId,
-           cssClass: "h360-door", createTooltipFunc: door(label) };
-}
-function floorSpot(pitch, yaw, sceneId, label) {
-  return { pitch: pitch, yaw: yaw, type: "scene", sceneId: sceneId,
-           cssClass: "h360-floor", createTooltipFunc: floor(label) };
-}
+function doorSpot(pitch, yaw, sceneId, label, opts) { return spot("h360-door", pitch, yaw, sceneId, label, opts); }
+function floorSpot(pitch, yaw, sceneId, label, opts) { return spot("h360-floor", pitch, yaw, sceneId, label, opts); }
 
 var config = {
   default: {
     firstScene: "sala-entrada",
     sceneFadeDuration: 900,
     autoLoad: true,
-    hfov: 100,
+    hfov: (window.innerWidth < window.innerHeight ? 65 : 100), /* narrower view on upright phones */
     showControls: true,
     showZoomCtrl: false,
     compass: false
@@ -144,9 +224,10 @@ var config = {
       title: "Sala (entrada)", panorama: "/tour-demo/sala-entrada.jpg", yaw: -10, pitch: -3,
       hotSpots: [
         doorSpot(-8, -56, "bano", "Baño"),
-        doorSpot(-8, -34, "habitacion-3", "Habitación 3"),
-        doorSpot(-5, 6, "habitacion-principal", "Habitación principal"),
-        doorSpot(-5, 15, "habitacion-2", "Habitación 2"),
+        doorSpot(-8, -34, "habitacion-3", "Hab. 3"),
+        /* these two doors are close together, so one sits higher and one lower */
+        doorSpot(-1, 5, "habitacion-principal", "Principal", { up: true }),
+        doorSpot(-11, 16, "habitacion-2", "Hab. 2"),
         floorSpot(-33, 19, "sala-interior", "Avanzar")
       ]
     },
@@ -156,10 +237,10 @@ var config = {
       title: "Sala (interior)", panorama: "/tour-demo/sala-interior.jpg", yaw: -30, pitch: -3,
       hotSpots: [
         doorSpot(-6, -79, "bano", "Baño"),
-        doorSpot(-6, -66, "habitacion-3", "Habitación 3"),
-        doorSpot(-6, -7, "habitacion-principal", "Habitación principal"),
-        doorSpot(-6, 7, "habitacion-2", "Habitación 2"),
-        floorSpot(-48, -115, "sala-entrada", "Volver a la entrada")
+        doorSpot(-6, -66, "habitacion-3", "Hab. 3", { up: true }),
+        doorSpot(-6, -7, "habitacion-principal", "Principal"),
+        doorSpot(-6, 7, "habitacion-2", "Hab. 2", { up: true }),
+        floorSpot(-48, -115, "sala-entrada", "Entrada")
       ]
     },
 
@@ -186,6 +267,7 @@ var config = {
 };
 
 var viewer = pannellum.viewer("tour", config);
+var editing = location.search.indexOf("edit=1") !== -1;
 
 /* Room menu */
 var menuItems = [
@@ -214,8 +296,32 @@ function markActive() {
 viewer.on("scenechange", function () { setTimeout(markActive, 50); });
 viewer.on("load", markActive);
 
+/* Opening motion: slow turn until the visitor touches the tour, then never again */
+var hint = document.getElementById("hint");
+var touched = false;
+function firstTouch() {
+  if (touched) return;
+  touched = true;
+  viewer.stopAutoRotate();
+  hint.classList.add("gone");
+}
+var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var started = false;
+viewer.on("load", function () {
+  if (started) return;
+  started = true;
+  if (editing) { hint.classList.add("gone"); touched = true; return; }
+  if (!reduce) viewer.startAutoRotate(-2.5);
+  setTimeout(function () { hint.classList.add("gone"); }, 6000);
+  /* Load the other rooms in the background so room changes feel instant */
+  Object.keys(config.scenes).forEach(function (k) { var i = new Image(); i.src = config.scenes[k].panorama; });
+});
+["pointerdown", "touchstart", "wheel", "keydown"].forEach(function (ev) {
+  document.addEventListener(ev, firstTouch, { passive: true, capture: true });
+});
+
 /* Calibration mode */
-if (location.search.indexOf("edit=1") !== -1) {
+if (editing) {
   var box = document.getElementById("coords");
   box.style.display = "block";
   var start = null;
